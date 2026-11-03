@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The open questions – ni-rich-neutrons · where the nickel sits</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html-afe927e19676d0e50b1726048be49fb1.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- KaTeX auto-render: publication titles carry TeX inside generated HTML that
+     Quarto's own math pipeline never sees (same approach as thermomat). -->
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script>
+/* The header ribbon is sticky; the side columns and anchor targets need its height. */
+(function () {
+  function headH() {
+    var t = document.querySelector(".topline"), h = document.querySelector(".site-head");
+    var px = (t ? t.offsetHeight : 0) + (h ? h.offsetHeight : 0);
+    if (px) document.documentElement.style.setProperty("--head-h", px + "px");
+  }
+  document.addEventListener("DOMContentLoaded", headH);
+  window.addEventListener("load", headH);
+  window.addEventListener("resize", headH);
+})();
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }, { left: "\\(", right: "\\)", display: false }],
+      throwOnError: false
+    });
+  }
+  /* Quarto's KaTeX pipeline writes <span class="math inline">TeX</span> without delimiters and renders
+     them in a loop that reads firstChild.data; that loop dies at the first span the auto-render above
+     has already turned into KaTeX markup, leaving every later formula raw. Render the rest here. */
+  if (window.katex) {
+    document.querySelectorAll(".math").forEach(function (el) {
+      if (!el.querySelector(".katex")) {
+        var t = el.textContent.replace(/^\s*\\[\(\[]/, "").replace(/\\[\)\]]\s*$/, "");
+        try { katex.render(t, el, { displayMode: el.classList.contains("display"), throwOnError: false }); } catch (e) {}
+      }
+      /* Quarto's loop would still visit this span and wipe it (firstChild is now an element, not text):
+         take it out of its sight. No stylesheet of the site depends on the class; KaTeX's own output carries the layout. */
+      el.classList.remove("math"); el.classList.add("math-done");
+    });
+  }
+});
+</script>
+
+
+<link rel="stylesheet" href="../assets/styles/theme.css">
+<link rel="stylesheet" href="../assets/styles/site.css">
+<link rel="stylesheet" href="../assets/styles/project.css">
+</head>
+
+<body>
+
+<!-- The header of the edition for Abdessamad Faik (tools/sibling.py copies it over the project site's). -->
+<div class="topline"></div>
+<header class="site-head">
+  <div class="site-head__inner">
+    <a href="../index.html" class="wordmark">ni-rich <span class="accent">neutrons</span> · where the nickel sits
+      <span class="wordmark-sub">from Fadila El Kouihen's thesis to neutron and synchrotron beam time · Abdessamad Faik (UM6P), Irene Urcelay-Olabarria and Josu M. Igartua (EHU) · November 2026</span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html">Overview</a>
+      <a href="../thesis/index.html">Thesis</a>
+      <a href="../gaps/index.html">Gaps</a>
+      <a href="../contrast/index.html">Contrast</a>
+      <a href="../structures/index.html">Structures</a>
+      <a href="../proposals/index.html">Proposals</a>
+      <a href="../instruments/index.html">Instruments</a>
+      <a href="../app/index.html">App</a>
+      <a href="../sources/index.html">Sources</a>
+    </nav>
+  </div>
+</header>
+<!-- generated by tools/sibling.py abdo: the left navigation -->
+<div class="docs">
+<nav class="docs-nav" aria-label="Site sections">
+<button class="docs-fold" type="button" data-fold="nav" aria-label="Hide the navigation" title="Hide the navigation">‹</button>
+<details class="group" open=""><summary class="t">Overview</summary><ul><li><a href="../index.html">Overview</a></li></ul></details>
+<details class="group" open=""><summary class="t">Thesis</summary><ul><li><a href="../thesis/index.html">What the thesis did</a></li><li><a href="../thesis/crystallography/index.html">The crystallography, in detail</a></li><li><a href="../thesis/facts/index.html">The fact base: 12 materials</a></li></ul></details>
+<details class="group" open=""><summary class="t">Gaps</summary><ul><li><a href="../gaps/index.html">The open questions F01–F10</a></li></ul></details>
+<details class="group" open=""><summary class="t">Contrast</summary><ul><li><a href="../contrast/index.html">What each probe sees, computed</a></li></ul></details>
+<details class="group" open=""><summary class="t">Structures</summary><ul><li><a href="../structures/index.html">The 12 cathodes as structures to be determined</a></li></ul></details>
+<details class="group" open=""><summary class="t">Proposals</summary><ul><li><a href="../proposals/index.html">The proposal set P0–P5</a></li><li><a href="../proposals/samples/index.html">Samples and preparation</a></li><li><a href="../proposals/calendar/index.html">Calendar 2027</a></li></ul></details>
+<details class="group" open=""><summary class="t">Instruments</summary><ul><li><a href="../instruments/index.html">ILL and ESRF instruments</a></li></ul></details>
+<details class="group" open=""><summary class="t">App</summary><ul><li><a href="../app/index.html">diff-ref-struct in the project</a></li></ul></details>
+<details class="group" open=""><summary class="t">Sources</summary><ul><li><a href="../sources/index.html">Sources, each with its status</a></li></ul></details>
+</nav>
+<div class="docs-main">
+
+<header id="title-block-header">
+<h1 class="title">The open questions</h1>
+
+</header>
+
+
+<div class="page-article">
+<h1>The open questions, F01–F10</h1>
+<p class="lede">The structural questions the thesis raises and its laboratory data cannot settle. For each: what the thesis says, why the laboratory pattern cannot answer, which probe can (with the pattern change computed on the <a href="../contrast/index.html">contrast page</a>), on which samples, what result to expect, and why it matters for the cathode. Priority 1 questions are the spine of the first proposals; priority 3 waits for a second round.</p>
+<div class="table-wrap">
+<table class="gaps-index caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Gap</th>
+<th data-quarto-table-cell-role="th">Question</th>
+<th data-quarto-table-cell-role="th">Priority</th>
+<th data-quarto-table-cell-role="th">Probe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#F01"><span class="pid">F01</span></a></td>
+<td>Where the nickel is: Li/Ni mixing measured, and which metal sits in the lithium layer</td>
+<td>1</td>
+<td>Neutrons (D2B) + synchrotron (ID22), jointly</td>
+</tr>
+<tr class="even">
+<td><a href="#F02"><span class="pid">F02</span></a></td>
+<td>How much lithium the cathodes contain</td>
+<td>1</td>
+<td>Neutrons + ICP + surface-Li titration</td>
+</tr>
+<tr class="odd">
+<td><a href="#F03"><span class="pid">F03</span></a></td>
+<td>The transition-metal layer: Mn, Co and Ni, and the oxidation state of Ni</td>
+<td>1</td>
+<td>Neutrons (TM layer) + XAS (oxidation states)</td>
+</tr>
+<tr class="even">
+<td><a href="#F04"><span class="pid">F04</span></a></td>
+<td>Where Mg, Na, Sc, Y and La go</td>
+<td>2</td>
+<td>Synchrotron (Y, La) · neutrons (Mg, Sc) · XAS</td>
+</tr>
+<tr class="odd">
+<td><a href="#F05"><span class="pid">F05</span></a></td>
+<td>Fe and Sb: valence, site, and the formula</td>
+<td>2</td>
+<td>Sb K / Fe K XANES + diffraction + Mössbauer</td>
+</tr>
+<tr class="even">
+<td><a href="#F06"><span class="pid">F06</span></a></td>
+<td>Oxygen: the slab, vacancies, and oxygen release on heating</td>
+<td>2</td>
+<td>Neutrons + in situ heating diffraction</td>
+</tr>
+<tr class="odd">
+<td><a href="#F07"><span class="pid">F07</span></a></td>
+<td>One cell per powder</td>
+<td>1</td>
+<td>Synchrotron (ID22) with a standard</td>
+</tr>
+<tr class="even">
+<td><a href="#F08"><span class="pid">F08</span></a></td>
+<td>Phase purity: surface lithium species, rock-salt, second phases</td>
+<td>2</td>
+<td>Synchrotron (ID22)</td>
+</tr>
+<tr class="odd">
+<td><a href="#F09"><span class="pid">F09</span></a></td>
+<td>What happens on cycling: the H2–H3 transition, the c collapse, Ni migration</td>
+<td>2</td>
+<td>Operando synchrotron (ID31/ID15A) + neutrons on cycled electrodes</td>
+</tr>
+<tr class="even">
+<td><a href="#F10"><span class="pid">F10</span></a></td>
+<td>The coated cathode in the solid-state cell</td>
+<td>3</td>
+<td>Nb K XAS · PDF · synchrotron diffraction</td>
+</tr>
+</tbody>
+</table>
+</div>
+<article class="gap pri-1" id="F01"><div class="idea-head"><span class="pid">F01</span><span class="sev">priority 1</span></div><h3 class="anchored">Where the nickel is: Li/Ni mixing measured, and which metal sits in the lithium layer</h3><div class="idea-f"><span class="lbl">What the thesis says</span><p>Cation mixing is read from the I(003)/I(104) ratio for every material (1.05 to 1.45, Tables II.5–II.9) and refined only for two: 3.5 % Li/Ni antisite in NMA and 2.2 % in La–NMA (p. 90). Every dopant is said to reduce mixing, and the electrochemistry is explained by it (Chapter III).</p></div><div class="idea-f"><span class="lbl">Why the laboratory pattern cannot settle it</span><p>I(003)/I(104) is a proxy that also moves with preferred orientation, absorption and the oxygen position; it is not an occupancy. More important, charge balance requires Ni<span class="math inline">\(^{2}\)</span>⁺, the species that mixes, in every Mn-containing material: 0.05–0.15 Ni<span class="math inline">\(^{2}\)</span>⁺ per formula unit (fact base), rising with Mn, while the ratio is read as falling mixing. X-rays see Ni on the Li layer well (3 % exchange changes the Cu Kα pattern by 6.5 %), but they cannot tell Ni from Mn there (Z 28 and 25: 0.2 %). Neutrons can (b 10.3 against −3.73 fm: 6.9 %, 33 times more).</p></div><div class="idea-f"><span class="lbl">What the literature already has</span><p>Li/Ni mixing by neutrons and joint X-ray/neutron refinement is well established for <span class="math inline">\(\mathrm{LiNiO_{2}}\)</span>, NCA and NMC (Rougier et al. 1996; Pouillerie et al. 2001; Goonetilleke et al. 2023; Kurzhals et al. 2021: 1.6–3.7 % Ni on the Li layer of <span class="math inline">\(\mathrm{LiNiO_{2}}\)</span>), and joint refinement reaches about 0.1 % antisite sensitivity (Yin et al. 2018). I(003)/I(104) gives the mixing only after a preferred-orientation correction and within one disordering scheme (Orlova et al. 2021, X-rays). No neutron refinement of Co-free NMA was found, and no study uses Mn's negative scattering length to tell Mn from Ni on the Li layer.</p></div><div class="idea-f"><span class="lbl">What can</span><p>Neutron powder diffraction at high resolution (ILL D2B) refined jointly with synchrotron data (ESRF ID22) in diff-ref-struct: Li, Ni and Mn on both layers, constrained by ICP and charge balance.</p></div><div class="idea-f"><span class="lbl">Samples</span><p>The key set K9.</p></div><div class="idea-f"><span class="lbl">Expected result</span><p>The Ni (and Mn) on the Li layer of each material, with esd; the dopant ranking of the thesis tested against refined values; the I(003)/I(104) proxy calibrated against the refined mixing on nine materials of one laboratory.</p></div><div class="idea-f"><span class="lbl">Why it matters</span><p>Li/Ni mixing is the thesis's explanation of capacity, efficiency and retention for every dopant. Measured, it becomes its central structural result.</p></div><div class="idea-f"><span class="lbl">Contrast, computed (pattern change)</span><span class="cchip" title="Li/Ni exchange of 3 % (0.03 Ni on the Li layer, 0.03 Li on the TM layer)"><span class="ck">li-ni-3</span>lab 6.48 % · D2B 5.66 % · ID22 6.18 %</span><span class="cchip" title="Which metal is in the Li layer: 0.03 Ni or 0.03 Mn (Li-deficient)"><span class="ck">ni-or-mn-li</span>lab 0.21 % · D2B 6.86 % · ID22 0.96 %</span><span class="cchip" title="Where the displaced Li goes: Li/Ni exchange against a Li-deficient Li0.97Ni1.03O2 (0.03 Ni on the Li layer in both)"><span class="ck">exch-vs-def</span>lab 5.41 % · D2B 5.73 % · ID22 5.58 %</span><span class="cchip" title="Li-deficient: 0.03 Ni on the Li layer, no Li on the TM layer (Li0.97Ni1.03)"><span class="ck">ni-li-def</span>lab 5.26 % · D2B 5.16 % · ID22 5.18 %</span></div></article>
+<article class="gap pri-1" id="F02"><div class="idea-head"><span class="pid">F02</span><span class="sev">priority 1</span></div><h3 class="anchored">How much lithium the cathodes contain</h3><div class="idea-f"><span class="lbl">What the thesis says</span><p>ICP-OES gives Li 0.6–0.9 wt% below nominal in all four Co-reduction materials, called a modest deficiency from volatilisation or surface LiOH/<span class="math inline">\(\mathrm{Li_{2}CO_{3}}\)</span> (Table II.4, p. 70).</p></div><div class="idea-f"><span class="lbl">Why the laboratory pattern cannot settle it</span><p>Converted to formula units, Table II.4 gives 0.908–0.932 Li per transition metal: a 7–9 % deficit. If it is real and in the bulk, the cathodes are Li₁₋ₓNi₁₊ₓO₂-like and Ni must fill the Li layer; if part of the Li is in surface carbonate and hydroxide, the bulk deficit is larger still. Lithium carries 1 % of the X-ray scattering of NMA; neutrons see it in antiphase to the metals.</p></div><div class="idea-f"><span class="lbl">What the literature already has</span><p>Li₁₋ₓNi₁₊ₓO₂ non-stoichiometry is the classic defect of these oxides (Rougier et al. 1996; Goonetilleke et al. 2023); the Li/Ni ratio of the synthesis controls it more than temperature (Kurzhals et al. 2021). Ex situ neutron diffraction refines Li occupancy in NCA at every state of charge (Hölderle et al. 2023).</p></div><div class="idea-f"><span class="lbl">What can</span><p>Neutron diffraction (D2B) for the Li occupancy, jointly with ID22; ICP-OES on washed and unwashed powder; titration of surface lithium species; TGA–MS.</p></div><div class="idea-f"><span class="lbl">Samples</span><p>K9, fresh and as stored.</p></div><div class="idea-f"><span class="lbl">Expected result</span><p>The bulk Li per formula unit of each material and the surface Li species, separated; a Li balance consistent with the refined Ni on the Li layer.</p></div><div class="idea-f"><span class="lbl">Why it matters</span><p>Lithium inventory sets the first-cycle efficiency (63 % for NCA, 98 % for NMA, 81 % for La–NMA: Table III.2, p. 136), which the thesis reads without it.</p></div><div class="idea-f"><span class="lbl">Contrast, computed (pattern change)</span><span class="cchip" title="Li content 0.95 per f.u. (vacancies on the Li layer)"><span class="ck">li-content</span>lab 0.92 % · D2B 1.35 % · ID22 0.73 %</span><span class="cchip" title="Li-deficient: 0.03 Ni on the Li layer, no Li on the TM layer (Li0.97Ni1.03)"><span class="ck">ni-li-def</span>lab 5.26 % · D2B 5.16 % · ID22 5.18 %</span></div></article>
+<article class="gap pri-1" id="F03"><div class="idea-head"><span class="pid">F03</span><span class="sev">priority 1</span></div><h3 class="anchored">The transition-metal layer: Mn, Co and Ni, and the oxidation state of Ni</h3><div class="idea-f"><span class="lbl">What the thesis says</span><p>Mn is assumed to replace Co on its site in the Mn–NCA series; the oxidation states of Ni, Mn and Co are not measured (XPS of Ni and Sb is not reported); the redox plateau is assigned to Ni<span class="math inline">\(^{2}\)</span>⁺/Ni<span class="math inline">\(^{4}\)</span>⁺ (p. 123).</p></div><div class="idea-f"><span class="lbl">Why the laboratory pattern cannot settle it</span><p>Ni, Co and Mn differ by one to three electrons; on the same site X-rays hardly separate them (Mn for Ni 0.16 %, Co for Ni 0.19 %). Neutrons separate them by sign and size (10.3, 2.49, −3.73 fm): 6.6 and 6.2 %, 35–40 times more. Oxidation states need X-ray absorption: Ni, Mn and Co K edges.</p></div><div class="idea-f"><span class="lbl">What the literature already has</span><p>Al in NCA is octahedral and homogeneous (Trease et al. 2016, with neutrons and NMR); Mn stays on its site on heating while Co migrates (Bak et al. 2014). 5 % Mn or Al in <span class="math inline">\(\mathrm{LiNiO_{2}}\)</span> delays the H2–H3 transition (Adamo and Manthiram 2024). The Mn-for-Co series of this thesis is published by the candidate (El Kouihen et al. 2026, J. Energy Storage) from laboratory XRD.</p></div><div class="idea-f"><span class="lbl">What can</span><p>Neutron diffraction (D2B) for the layer composition; Ni K, Mn K and Co K XANES (ESRF BM23) for Ni<span class="math inline">\(^{2}\)</span>⁺/Ni<span class="math inline">\(^{3}\)</span>⁺, Mn<span class="math inline">\(^{4}\)</span>⁺ and Co<span class="math inline">\(^{3}\)</span>⁺.</p></div><div class="idea-f"><span class="lbl">Samples</span><p>NCA, 5 % Mn–NCA, 10 % Mn–NCA, NMA, Fe/Sb–NMA.</p></div><div class="idea-f"><span class="lbl">Expected result</span><p>The mean Ni oxidation state of each material, set against the charge-balance prediction (Ni 3.00 in NCA down to 2.81 in NMA); the Mn and Co contents of the TM layer.</p></div><div class="idea-f"><span class="lbl">Why it matters</span><p>The Co-to-Mn replacement is the first design line of the thesis; whether Mn enters as Mn<span class="math inline">\(^{4}\)</span>⁺ with Ni<span class="math inline">\(^{2}\)</span>⁺, and where the Ni<span class="math inline">\(^{2}\)</span>⁺ goes, decides what it does to the structure.</p></div><div class="idea-f"><span class="lbl">Contrast, computed (pattern change)</span><span class="cchip" title="Mn/Ni ratio: 0.03 more Mn for Ni on the TM layer"><span class="ck">mn-ni</span>lab 0.16 % · D2B 6.62 % · ID22 0.89 %</span><span class="cchip" title="Co for Ni: 0.05 Co replacing Ni on the TM layer"><span class="ck">co-ni</span>lab 0.19 % · D2B 6.15 % · ID22 0.51 %</span></div></article>
+<article class="gap pri-2" id="F04"><div class="idea-head"><span class="pid">F04</span><span class="sev">priority 2</span></div><h3 class="anchored">Where Mg, Na, Sc, Y and La go</h3><div class="idea-f"><span class="lbl">What the thesis says</span><p>All five are said to be incorporated, from lattice shifts and the absence of extra peaks: Mg, Y, La on the TM layer (p. 88), Sc on the Mn site and Na on the Li site (p. 98). La<span class="math inline">\(^{3}\)</span>⁺ (1.03 Å) and Y<span class="math inline">\(^{3}\)</span>⁺ (0.90 Å) are much larger than any TM ion of the layer.</p></div><div class="idea-f"><span class="lbl">Why the laboratory pattern cannot settle it</span><p>The site of a dopant at 3 mol % is a small change on any probe. X-rays see Y and La best (10–15 % between the TM and the Li layer), neutrons Mg and Sc slightly better than X-rays; Na is seen equally. Second phases (La- or Y-rich oxides, Na-rich layers) below a few per cent are invisible in laboratory data; surface segregation is invisible to diffraction altogether.</p></div><div class="idea-f"><span class="lbl">What the literature already has</span><p>Mg goes first to the Ni site up to about 1.7 % and then to the Li site (Weber et al. 2022, synchrotron XRD); in Mg/Mn-<span class="math inline">\(\mathrm{LiNiO_{2}}\)</span> Mg sits on the Li site (Mu et al. 2020). Y forms a surface gradient by segregation (Wang et al. 2021); La forms a <span class="math inline">\(\mathrm{La_{2}Ni_{0}}\)</span>.₅Li₀.₅O₄ surface layer on NCM811 (Wu et al. 2019). Dopants added at co-precipitation enter the lattice, at lithiation they stay as a phase (Colalongo et al. 2024, Zr, synchrotron XRD + XAS), the closest template for this route. No site-resolved evidence was found for Sc or Na.</p></div><div class="idea-f"><span class="lbl">What can</span><p>High-resolution synchrotron diffraction (ID22) for the site of Y and La and for second phases to <span class="math inline">\(\approx 0.1\)</span> wt%; neutrons (D2B) for Mg; Y K, La K and Sc K X-ray absorption (BM23; BM08 or BM20 for Sc) for the local environment.</p></div><div class="idea-f"><span class="lbl">Samples</span><p>Mg–, Y–, La–, Sc–, Na–NMA and the pristine NMA.</p></div><div class="idea-f"><span class="lbl">Expected result</span><p>For each dopant: the fraction on the TM layer, on the Li layer, and in a second phase or at the surface.</p></div><div class="idea-f"><span class="lbl">Why it matters</span><p>The best retention of the thesis (La–NMA 96.3 %, Y–NMA 92.9 % after 200 cycles) is explained by incorporation into the lattice; a surface phase would be a different mechanism, a coating.</p></div><div class="idea-f"><span class="lbl">Contrast, computed (pattern change)</span><span class="cchip" title="Mg 0.03 on the TM layer or on the Li layer"><span class="ck">mg-site</span>lab 2.78 % · D2B 3.40 % · ID22 2.13 %</span><span class="cchip" title="Na 0.03 on the Li layer (the thesis) or on the TM layer"><span class="ck">na-site</span>lab 2.61 % · D2B 2.67 % · ID22 1.95 %</span><span class="cchip" title="Sc 0.03 on the TM layer or on the Li layer"><span class="ck">sc-site</span>lab 5.21 % · D2B 6.46 % · ID22 4.16 %</span><span class="cchip" title="Y 0.03 on the TM layer or on the Li layer"><span class="ck">y-site</span>lab 10.35 % · D2B 4.47 % · ID22 8.67 %</span><span class="cchip" title="La 0.03 on the TM layer or on the Li layer"><span class="ck">la-site</span>lab 14.64 % · D2B 4.69 % · ID22 12.48 %</span></div></article>
+<article class="gap pri-2" id="F05"><div class="idea-head"><span class="pid">F05</span><span class="sev">priority 2</span></div><h3 class="anchored">Fe and Sb: valence, site, and the formula</h3><div class="idea-f"><span class="lbl">What the thesis says</span><p>Sb<span class="math inline">\(^{3}\)</span>⁺ is said to oxidise to Sb<span class="math inline">\(^{5}\)</span>⁺ during calcination (p. 79), while §II.3.2 lists Sb<span class="math inline">\(^{3}\)</span>⁺ among the trivalent dopants; Fe<span class="math inline">\(^{3}\)</span>⁺ is placed on the TM layer. The Fe/Sb–NMA formula of §II.4.4 has 1.10 metals per formula unit, and Table II.10's own theoretical values correspond to about Ni₀.₇₆Mn₀.₀₈Fe₀.₀₅Sb₀.₀₅Al₀.₀₆.</p></div><div class="idea-f"><span class="lbl">Why the laboratory pattern cannot settle it</span><p>Valence is not a diffraction quantity. Fe on the Li layer, known in <span class="math inline">\(\mathrm{LiNi_{1}}\)</span>₋ₓFeₓO₂, changes the X-ray and neutron patterns about equally (5–6 %); Sb on the Li layer is an X-ray question (14 % in Cu Kα). With Sb<span class="math inline">\(^{5}\)</span>⁺ and Fe<span class="math inline">\(^{3}\)</span>⁺ charge balance requires 0.10 Ni<span class="math inline">\(^{2}\)</span>⁺ in Fe/Sb–NCA, more Ni to mix, not less.</p></div><div class="idea-f"><span class="lbl">What the literature already has</span><p>Fe in Li(Ni,Fe)O₂ sits on both the slab and the interslab sites at high substitution (Prado et al. 2000, X-rays, neutrons and ⁵⁷Fe Mössbauer), the only direct precedent. Fe and Ni have similar neutron scattering lengths (9.45 and 10.3 fm), so the Fe site needs resonant X-rays at the Fe K edge or Mössbauer. No Sb K-edge XAS or Sb site refinement was found for Ni-rich cathodes; Sb doping is argued from surface oxygen retention (Cheng et al. 2020).</p></div><div class="idea-f"><span class="lbl">What can</span><p>Sb K (30.49 keV) and Fe K XANES/EXAFS (BM23); resonant diffraction at the Fe K edge (ID22) for the Fe site, since Fe and Ni scatter neutrons alike; ⁵⁷Fe Mössbauer where available; the joint refinement (D2B + ID22) with the ICP composition.</p></div><div class="idea-f"><span class="lbl">Samples</span><p>Fe/Sb–NCA, Fe/Sb–NMA, and their pristine references.</p></div><div class="idea-f"><span class="lbl">Expected result</span><p>The valence of Sb and Fe, the site of Fe, and one formula per material that closes against ICP and charge.</p></div><div class="idea-f"><span class="lbl">Why it matters</span><p>The co-doped NMA has the best retention of the thesis (96.7 %); its composition is not yet one number.</p></div><div class="idea-f"><span class="lbl">Contrast, computed (pattern change)</span><span class="cchip" title="Fe 0.03 on the TM layer or on the Li layer"><span class="ck">fe-site</span>lab 6.43 % · D2B 5.22 % · ID22 5.55 %</span><span class="cchip" title="Sb 0.03 on the TM layer or on the Li layer"><span class="ck">sb-site</span>lab 13.74 % · D2B 3.49 % · ID22 11.15 %</span></div></article>
+<article class="gap pri-2" id="F06"><div class="idea-head"><span class="pid">F06</span><span class="sev">priority 2</span></div><h3 class="anchored">Oxygen: the slab, vacancies, and oxygen release on heating</h3><div class="idea-f"><span class="lbl">What the thesis says</span><p>Li–O distances of 2.363–2.395 Å are reported (Tables II.5, II.9), which require a refined oxygen position; thermal stability is argued from TGA mass loss of the lithiated powders (pp. 73, 81).</p></div><div class="idea-f"><span class="lbl">Why the laboratory pattern cannot settle it</span><p>The oxygen position and occupancy carry 15 % of the X-ray scattering of NMA and 42 % of the neutron scattering: neutrons are 2–2.5 times more sensitive (o-z, o-vac). TGA of a lithiated powder measures surface species and moisture, not the oxygen release of a charged cathode, which is what thermal stability means for a battery.</p></div><div class="idea-f"><span class="lbl">What the literature already has</span><p>On heating, charged NMC releases O₂ and turns to rock salt, earlier the more Ni it holds (Bak et al. 2014; Jung et al. 2017; Geng et al. 2020 with ex situ neutrons). No in situ heating synchrotron study of doped NMA was found.</p></div><div class="idea-f"><span class="lbl">What can</span><p>Neutrons (D2B) for z(O) and occupancy; in situ heating synchrotron diffraction of charged (delithiated) electrodes (ID22 hot-air blower or ID15A oven) for the layered → spinel → rock-salt sequence and its onset temperature.</p></div><div class="idea-f"><span class="lbl">Samples</span><p>NMA, La–NMA, Y–NMA, Fe/Sb–NMA, charged to 4.5 V.</p></div><div class="idea-f"><span class="lbl">Expected result</span><p>z(O), the Li-slab and TM-slab thicknesses with esd; the onset temperature of the phase transitions of each charged cathode.</p></div><div class="idea-f"><span class="lbl">Why it matters</span><p>It replaces a thermal-stability claim based on powders by the measurement that defines it.</p></div><div class="idea-f"><span class="lbl">Contrast, computed (pattern change)</span><span class="cchip" title="Oxygen position z + 0.001 (slab thickness)"><span class="ck">o-z</span>lab 1.63 % · D2B 4.03 % · ID22 1.67 %</span><span class="cchip" title="Oxygen vacancies, 2 % (O1.96)"><span class="ck">o-vac</span>lab 1.05 % · D2B 2.12 % · ID22 0.91 %</span></div></article>
+<article class="gap pri-1" id="F07"><div class="idea-head"><span class="pid">F07</span><span class="sev">priority 1</span></div><h3 class="anchored">One cell per powder</h3><div class="idea-f"><span class="lbl">What the thesis says</span><p>The same pristine NMA appears with a = 2.9042, c = 14.3489 Å (Table II.3) and a = 2.860, c = 14.30 Å (Tables II.7–II.9); c/a = 5.00–5.08 for the NMA family against 4.94 for NCA.</p></div><div class="idea-f"><span class="lbl">Why the laboratory pattern cannot settle it</span><p>Both NMA cells are far from each other (1.5 % in a) and from the values usually reported for Ni-rich NMA (c/a <span class="math inline">\(\approx 4.94\text{–}4.95\)</span>); c/a near 5.0 is unusual for a layered oxide of this composition. A zero-shift or calibration problem in the laboratory data is the likely cause; no standard or zero-shift treatment is stated.</p></div><div class="idea-f"><span class="lbl">What can</span><p>High-resolution synchrotron diffraction of all twelve powders with an internal standard (ID22).</p></div><div class="idea-f"><span class="lbl">Samples</span><p>All twelve materials (A12).</p></div><div class="idea-f"><span class="lbl">Expected result</span><p>One lattice parameter set with esd per material, from one instrument and one protocol; the dopant trends of a, c and c/a re-read on it.</p></div><div class="idea-f"><span class="lbl">Why it matters</span><p>Every lattice-shift argument of Chapter II (incorporation, expansion with ionic radius) rests on these numbers.</p></div></article>
+<article class="gap pri-2" id="F08"><div class="idea-head"><span class="pid">F08</span><span class="sev">priority 2</span></div><h3 class="anchored">Phase purity: surface lithium species, rock-salt, second phases</h3><div class="idea-f"><span class="lbl">What the thesis says</span><p>No secondary phases detected in any material (Chapter II), from laboratory patterns.</p></div><div class="idea-f"><span class="lbl">Why the laboratory pattern cannot settle it</span><p><span class="math inline">\(\mathrm{Li_{2}CO_{3}}\)</span> and LiOH on Ni-rich surfaces, a NiO-like rock-salt fraction, and La-, Y- or Sc-rich oxides at the per-cent level are at or below laboratory detection, and Mn, Co and Fe fluoresce under Cu Kα (their K edges are below 8.05 keV), raising the background of exactly these samples unless the detector discriminates.</p></div><div class="idea-f"><span class="lbl">What can</span><p>High-resolution synchrotron diffraction (ID22), detection limits <span class="math inline">\(\approx 0.1\)</span> wt%.</p></div><div class="idea-f"><span class="lbl">Samples</span><p>All twelve.</p></div><div class="idea-f"><span class="lbl">Expected result</span><p>The phase content of each powder with detection limits; the surface lithium species quantified.</p></div><div class="idea-f"><span class="lbl">Why it matters</span><p>Secondary phases change the capacity per gram and the interface, and can masquerade as dopant effects.</p></div></article>
+<article class="gap pri-2" id="F09"><div class="idea-head"><span class="pid">F09</span><span class="sev">priority 2</span></div><h3 class="anchored">What happens on cycling: the H2–H3 transition, the c collapse, Ni migration</h3><div class="idea-f"><span class="lbl">What the thesis says</span><p>Retention after 200 cycles (NMA 76.5 %, Y–NMA 92.9 %, La–NMA 96.3 %, Fe/Sb–NMA 96.7 %) is explained by reduced mixing and better ordering; the Perspectives ask for operando XRD and synchrotron techniques (p. 183).</p></div><div class="idea-f"><span class="lbl">Why the laboratory pattern cannot settle it</span><p>Structural evolution on cycling is not measured: no operando or ex situ diffraction of electrodes.</p></div><div class="idea-f"><span class="lbl">What the literature already has</span><p>Operando synchrotron diffraction of the H2–H3 transition and the c collapse of Ni-rich cathodes is routine (Li et al. 2018; Jousseaume et al. 2024; Liu et al. 2023), including XRD-CT of an NCA 18650 at ESRF ID31 (Matras et al. 2022); operando neutron diffraction of pouch cells with natural Li works (Menon et al. 2026, ISIS WISH). The doped NMA of this thesis has not been studied so.</p></div><div class="idea-f"><span class="lbl">What can</span><p>Operando synchrotron diffraction in coin or pouch cells (ESRF ID31 or ID15A) over the first charge to 4.5 V and early cycles; ex situ neutron diffraction (D2B) of electrodes after 200 cycles for the Ni on the Li layer.</p></div><div class="idea-f"><span class="lbl">Samples</span><p>NMA, Y–NMA, La–NMA, Fe/Sb–NMA.</p></div><div class="idea-f"><span class="lbl">Expected result</span><p>The c-axis collapse and H2–H3 coexistence of each material against state of charge; the Li/Ni mixing after cycling against the pristine.</p></div><div class="idea-f"><span class="lbl">Why it matters</span><p>It tests the mechanism the thesis gives for its best retention.</p></div></article>
+<article class="gap pri-3" id="F10"><div class="idea-head"><span class="pid">F10</span><span class="sev">priority 3</span></div><h3 class="anchored">The coated cathode in the solid-state cell</h3><div class="idea-f"><span class="lbl">What the thesis says</span><p>About 1 wt% <span class="math inline">\(\mathrm{LiNbO_{3}}\)</span> coating improves the NMA | <span class="math inline">\(\mathrm{Li_{6}PS_{5}Cl}\)</span> | Li–In cell (73.8 % against 60.1 % after 50 cycles, §IV.3.2); coating thickness, crystallinity and Nb diffusion are not determined.</p></div><div class="idea-f"><span class="lbl">Why the laboratory pattern cannot settle it</span><p>A nanometre coating of 1 wt% is invisible to laboratory diffraction; whether it is crystalline <span class="math inline">\(\mathrm{LiNbO_{3}}\)</span>, amorphous, or Nb dissolved in the surface of the cathode decides its role.</p></div><div class="idea-f"><span class="lbl">What the literature already has</span><p><span class="math inline">\(\mathrm{LiNbO_{3}}\)</span> and <span class="math inline">\(\mathrm{Li_{2}CO_{3}}\)</span>/<span class="math inline">\(\mathrm{LiNbO_{3}}\)</span> coatings on NCM with β-<span class="math inline">\(\mathrm{Li_{3}PS_{4}}\)</span> and <span class="math inline">\(\mathrm{Li_{6}PS_{5}Cl}\)</span> are studied by XPS, ToF-SIMS and FIB-SEM (Kim et al. 2019, 2021; Walther et al. 2021); Nb from a coating step also enters the bulk of NMC811 and NMC9055 (Xin et al. 2019, 2022). An operando neutron cell for solid-state batteries exists at the ILL (ILLBAT; Korjus et al. 2025; Anil Kumar et al. 2025, preprint). Nothing on <span class="math inline">\(\mathrm{LiNbO_{3}}\)</span>-coated Co-free NMA.</p></div><div class="idea-f"><span class="lbl">What can</span><p>Nb K XAS (18.99 keV, BM23); X-ray total scattering (ID15A) for an amorphous coating; synchrotron diffraction of the composite before and after cycling.</p></div><div class="idea-f"><span class="lbl">Samples</span><p>Coated and pristine NMA, and their composite cathodes before and after cycling.</p></div><div class="idea-f"><span class="lbl">Expected result</span><p>The state and location of Nb; the interface phases after cycling.</p></div><div class="idea-f"><span class="lbl">Why it matters</span><p>Second round: the link to the solid-state strand of the joint project (the garnet electrolytes of the first project).</p></div></article>
+</div>
+
+
+<!-- Closes the reading column opened by _gen/docs-nav.html, adds the right
+     "On this page" list, and wires: current-page marking in the left nav,
+     breadcrumbs, the page TOC (from h2/h3 in the reading column) and a
+     scroll-spy. Pure DOM, no library. -->
+  </div>
+  <aside class="docs-toc"><button class="docs-fold" type="button" data-fold="toc" aria-label="Hide the page outline" title="Hide the page outline">›</button><div class="t">On this page</div><ol></ol></aside>
+</div>
+<script>
+(function () {
+  /* 0. The two side panels fold on their chevrons; the choice is remembered in this browser. */
+  var docs = document.querySelector('.docs');
+  if (docs) {
+    var store = {};
+    try { store = JSON.parse(localStorage.getItem('docs-fold') || '{}'); } catch (e) { store = {}; }
+    function apply() {
+      docs.classList.toggle('nav-folded', !!store.nav);
+      docs.classList.toggle('toc-folded', !!store.toc);
+      document.querySelectorAll('.docs-fold').forEach(function (b) {
+        var which = b.getAttribute('data-fold'), folded = !!store[which];
+        b.innerHTML = (which === 'nav') === folded ? '&rsaquo;' : '&lsaquo;';
+        var what = which === 'nav' ? 'the navigation' : 'the page outline';
+        b.title = (folded ? 'Show ' : 'Hide ') + what; b.setAttribute('aria-label', b.title);
+      });
+    }
+    document.querySelectorAll('.docs-fold').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var which = b.getAttribute('data-fold'); store[which] = !store[which];
+        try { localStorage.setItem('docs-fold', JSON.stringify(store)); } catch (e) {}
+        apply();
+      });
+    });
+    apply();
+  }
+  /* 0b. The header ribbon: mark the entry whose section holds this page. Quarto rewrites the hrefs to
+     relative paths, so folders are read from the resolved URLs; the Overview link gives the site root. */
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.site-nav a'));
+    if (!links.length) return;
+    /* a served URL may end in '/' (GitHub Pages: …/about/); read it as …/about/index.html */
+    function folder(path) { if (/\/$/.test(path)) path += 'index.html'; var s = path.split('/').filter(Boolean); return s.length > 1 ? s[s.length - 2] : ''; }
+    var wm = document.querySelector('a.wordmark');            // the wordmark links to the site root
+    var root = folder((wm || links[0]).pathname);
+    var map = { rietveld: 'cases', drude: 'cases', dielectric: 'cases' };
+    function key(path) { var f = folder(path); if (f === root) return 'overview'; return map[f] || f; }
+    var here = key(location.pathname);
+    links.forEach(function (a) { a.classList.toggle('current', key(a.pathname) === here); });
+  })();
+
+  var main = document.querySelector('.docs-main');
+  var nav = document.querySelector('.docs-nav');
+  var toc = document.querySelector('.docs-toc ol');
+  if (!main || !nav || !toc) return;
+
+  /* 1. Left nav: mark the current page (and section, if the hash matches). */
+  var here = location.pathname.replace(/\/index\.html$/, '/');
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var pageLink = null, hashLink = null;
+  links.forEach(function (a) {
+    var p = a.pathname.replace(/\/index\.html$/, '/');
+    if (p !== here) return;
+    if (!a.hash && !pageLink) pageLink = a;
+    if (a.hash && a.hash === location.hash) hashLink = a;
+  });
+  var cur = hashLink || pageLink;
+  if (cur) {
+    cur.classList.add('current');
+    var det = cur.closest('details.group');
+    if (det) { det.open = true; det.classList.add('has-current'); }
+    /* Breadcrumbs: group title › page (› section). */
+    var crumbs = document.createElement('div');
+    crumbs.className = 'docs-crumbs';
+    var g = det ? det.querySelector('summary.t') : null;
+    var parts = [];
+    function push(t) { if (t && parts[parts.length - 1] !== t) parts.push(t); }
+    if (g) push(g.textContent.trim());
+    if (pageLink && pageLink !== cur) push(pageLink.textContent.trim());
+    push(cur.textContent.trim());
+    crumbs.innerHTML = parts.map(function (t, i) {
+      return (i ? '<span class="sep">›</span>' : '') + '<span>' + t.replace(/</g, '&lt;') + '</span>';
+    }).join('');
+    main.insertBefore(crumbs, main.firstChild);
+  }
+
+  /* 2. Right "On this page": h2 and h3 of the reading column. */
+  var used = {};
+  var heads = Array.prototype.slice.call(main.querySelectorAll('h2, h3')).filter(function (h) {
+    if (h.closest('.site-foot, .featured-band, .msg-grid, [data-toc="no"]')) return false;
+    if (h.classList.contains('unnumbered') || h.id === 'contenido') return false;
+    return h.textContent.trim().length > 0;
+  });
+  heads.forEach(function (h) {
+    if (!h.id) {
+      var s = h.textContent.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || 'sec';
+      while (used[s] || document.getElementById(s)) s += '-';
+      h.id = s;
+    }
+    used[h.id] = true;
+    var li = document.createElement('li');
+    if (h.tagName === 'H3') li.className = 'l3';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    /* This runs before KaTeX has rendered the headings, so a heading with mathematics still holds TeX
+       source: copy its markup, including the math spans, and let the page's KaTeX pass render the copy. */
+    var copy = h.cloneNode(true);
+    copy.querySelectorAll('.katex-mathml, annotation, .anchorjs-link').forEach(function (n) { n.remove(); });
+    var label = copy.textContent.trim().replace(/\s+/g, ' ');
+    if (copy.querySelector('.math, .math-done, .katex')) a.innerHTML = copy.innerHTML.trim();
+    else a.textContent = label.length > 72 ? label.slice(0, 70).replace(/[\s,;:]+\S*$/, '') + '…' : label;
+    a.title = label;
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  if (!heads.length) { document.querySelector('.docs-toc').hidden = true; return; }
+
+  /* 3. Scroll-spy. */
+  var items = Array.prototype.slice.call(toc.querySelectorAll('a'));
+  function spy() {
+    var y = window.scrollY + 120, best = null;
+    heads.forEach(function (h) { if (h.getBoundingClientRect().top + window.scrollY <= y) best = h; });
+    items.forEach(function (a) { a.classList.toggle('current', best && a.getAttribute('href') === '#' + best.id); });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  window.addEventListener('hashchange', spy);
+  spy();
+})();
+</script>
+<footer class="site-foot">
+  <div class="site-foot__inner">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <h4 class="anchored">What this is</h4>
+        <p>A proposal for discussion: Fadila El Kouihen's thesis on doped Ni-rich layered cathodes (UM6P, 2026), re-read for its crystallography, and the neutron and synchrotron experiments that would give it its structural answers. Abdessamad Faik (UM6P), Irene Urcelay-Olabarria and Josu M. Igartua (EHU).</p>
+        <div class="cite-block">Josu M. Igartua · Fisika Saila, EHU<br>josu.igartua@ehu.eus</div>
+      </div>
+      <div><h4 class="anchored">This site</h4><ul>
+        <li><a href="../index.html">Overview</a></li><li><a href="../thesis/index.html">Thesis</a></li><li><a href="../gaps/index.html">Gaps</a></li><li><a href="../contrast/index.html">Contrast</a></li><li><a href="../structures/index.html">Structures</a></li><li><a href="../proposals/index.html">Proposals</a></li><li><a href="../instruments/index.html">Instruments</a></li><li><a href="../app/index.html">App</a></li><li><a href="../sources/index.html">Sources</a></li>
+      </ul></div>
+      <div><h4 class="anchored">Facilities</h4><ul>
+        <li><a href="https://www.ill.eu/">ILL, Grenoble</a></li>
+        <li><a href="https://www.esrf.fr/">ESRF, Grenoble</a></li>
+        <li><a href="https://jmigartua.github.io/diff-ref-struct-site/">diff-ref-struct</a></li></ul></div>
+      <div><h4 class="anchored">Status</h4><ul>
+        <li>Draft for discussion, November 2026</li>
+        <li>Numbers from the revised manuscript of 17 October 2026</li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Abdessamad Faik, Irene Urcelay-Olabarria, Josu M. Igartua · draft</span>
+      <span>Quarto · family design kit</span>
+    </div>
+  </div>
+</footer>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+    tabsets.forEach(function(tabset) {
+      const tabby = new Tabby('#' + tabset.id);
+    });
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>What each probe sees – ni-rich-neutrons · where the nickel sits</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html-afe927e19676d0e50b1726048be49fb1.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- KaTeX auto-render: publication titles carry TeX inside generated HTML that
+     Quarto's own math pipeline never sees (same approach as thermomat). -->
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script>
+/* The header ribbon is sticky; the side columns and anchor targets need its height. */
+(function () {
+  function headH() {
+    var t = document.querySelector(".topline"), h = document.querySelector(".site-head");
+    var px = (t ? t.offsetHeight : 0) + (h ? h.offsetHeight : 0);
+    if (px) document.documentElement.style.setProperty("--head-h", px + "px");
+  }
+  document.addEventListener("DOMContentLoaded", headH);
+  window.addEventListener("load", headH);
+  window.addEventListener("resize", headH);
+})();
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }, { left: "\\(", right: "\\)", display: false }],
+      throwOnError: false
+    });
+  }
+  /* Quarto's KaTeX pipeline writes <span class="math inline">TeX</span> without delimiters and renders
+     them in a loop that reads firstChild.data; that loop dies at the first span the auto-render above
+     has already turned into KaTeX markup, leaving every later formula raw. Render the rest here. */
+  if (window.katex) {
+    document.querySelectorAll(".math").forEach(function (el) {
+      if (!el.querySelector(".katex")) {
+        var t = el.textContent.replace(/^\s*\\[\(\[]/, "").replace(/\\[\)\]]\s*$/, "");
+        try { katex.render(t, el, { displayMode: el.classList.contains("display"), throwOnError: false }); } catch (e) {}
+      }
+      /* Quarto's loop would still visit this span and wipe it (firstChild is now an element, not text):
+         take it out of its sight. No stylesheet of the site depends on the class; KaTeX's own output carries the layout. */
+      el.classList.remove("math"); el.classList.add("math-done");
+    });
+  }
+});
+</script>
+
+
+<link rel="stylesheet" href="../assets/styles/theme.css">
+<link rel="stylesheet" href="../assets/styles/site.css">
+<link rel="stylesheet" href="../assets/styles/project.css">
+</head>
+
+<body>
+
+<!-- The header of the edition for Abdessamad Faik (tools/sibling.py copies it over the project site's). -->
+<div class="topline"></div>
+<header class="site-head">
+  <div class="site-head__inner">
+    <a href="../index.html" class="wordmark">ni-rich <span class="accent">neutrons</span> · where the nickel sits
+      <span class="wordmark-sub">from Fadila El Kouihen's thesis to neutron and synchrotron beam time · Abdessamad Faik (UM6P), Irene Urcelay-Olabarria and Josu M. Igartua (EHU) · November 2026</span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html">Overview</a>
+      <a href="../thesis/index.html">Thesis</a>
+      <a href="../gaps/index.html">Gaps</a>
+      <a href="../contrast/index.html">Contrast</a>
+      <a href="../structures/index.html">Structures</a>
+      <a href="../proposals/index.html">Proposals</a>
+      <a href="../instruments/index.html">Instruments</a>
+      <a href="../app/index.html">App</a>
+      <a href="../sources/index.html">Sources</a>
+    </nav>
+  </div>
+</header>
+<!-- generated by tools/sibling.py abdo: the left navigation -->
+<div class="docs">
+<nav class="docs-nav" aria-label="Site sections">
+<button class="docs-fold" type="button" data-fold="nav" aria-label="Hide the navigation" title="Hide the navigation">‹</button>
+<details class="group" open=""><summary class="t">Overview</summary><ul><li><a href="../index.html">Overview</a></li></ul></details>
+<details class="group" open=""><summary class="t">Thesis</summary><ul><li><a href="../thesis/index.html">What the thesis did</a></li><li><a href="../thesis/crystallography/index.html">The crystallography, in detail</a></li><li><a href="../thesis/facts/index.html">The fact base: 12 materials</a></li></ul></details>
+<details class="group" open=""><summary class="t">Gaps</summary><ul><li><a href="../gaps/index.html">The open questions F01–F10</a></li></ul></details>
+<details class="group" open=""><summary class="t">Contrast</summary><ul><li><a href="../contrast/index.html">What each probe sees, computed</a></li></ul></details>
+<details class="group" open=""><summary class="t">Structures</summary><ul><li><a href="../structures/index.html">The 12 cathodes as structures to be determined</a></li></ul></details>
+<details class="group" open=""><summary class="t">Proposals</summary><ul><li><a href="../proposals/index.html">The proposal set P0–P5</a></li><li><a href="../proposals/samples/index.html">Samples and preparation</a></li><li><a href="../proposals/calendar/index.html">Calendar 2027</a></li></ul></details>
+<details class="group" open=""><summary class="t">Instruments</summary><ul><li><a href="../instruments/index.html">ILL and ESRF instruments</a></li></ul></details>
+<details class="group" open=""><summary class="t">App</summary><ul><li><a href="../app/index.html">diff-ref-struct in the project</a></li></ul></details>
+<details class="group" open=""><summary class="t">Sources</summary><ul><li><a href="../sources/index.html">Sources, each with its status</a></li></ul></details>
+</nav>
+<div class="docs-main">
+
+<header id="title-block-header">
+<h1 class="title">What each probe sees</h1>
+
+</header>
+
+
+<div class="page-article">
+<h1>What each probe sees, computed</h1>
+<p class="lede">Before asking for beam time: for each structural question, two models of the cathode that differ by that question alone; the structure factors of both computed by diff-ref-struct's core for a laboratory diffractometer, for ILL D2B and for ESRF ID22; and the change of the powder pattern measured. The numbers say which instrument each question belongs to, and they are the feasibility argument of every proposal.</p>
+
+<h2 id="weights" class="anchored">Who scatters</h2>
+<p>The share of the total scattering power carried by each element of NMA: <span class="math inline">\(\sum n f^2\)</span> for X-rays, <span class="math inline">\(\sum n b^2\)</span> for neutrons. Nickel dominates both; but in neutrons oxygen carries 42 %, lithium doubles its weight, and manganese scatters with a negative sign (<span class="math inline">\(b = -3.73\)</span> fm against <span class="math inline">\(+10.3\)</span> fm for Ni), so the identity of a metal on a site becomes visible.</p>
+<div class="table-wrap">
+<table class="weights caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Element</th>
+<th data-quarto-table-cell-role="th">X-rays (% of Σnf²)</th>
+<th data-quarto-table-cell-role="th">Neutrons (% of Σnb²)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Li</td>
+<td>1.0</td>
+<td>2.3</td>
+</tr>
+<tr class="even">
+<td>Ni</td>
+<td>72.4</td>
+<td>53.5</td>
+</tr>
+<tr class="odd">
+<td>Mn</td>
+<td>10.8</td>
+<td>1.3</td>
+</tr>
+<tr class="even">
+<td>Al</td>
+<td>1.0</td>
+<td>0.4</td>
+</tr>
+<tr class="odd">
+<td>O</td>
+<td>14.8</td>
+<td>42.5</td>
+</tr>
+</tbody>
+</table>
+</div><p class="table-note">Linear absorption at 1.594 Å, natural Li: NMA μ = 1.998 cm⁻¹, μR = 0.48; NCA (Co absorbs 37 b) μ = 2.092 cm⁻¹, μR = 0.502, for an 8 mm can at 60 % packing; lithium 92.6 % of the NMA absorption. With ⁷Li (99.9 %): μR = 0.041 (NMA), 0.064 (NCA).</p>
+<h2 id="cases" class="anchored">Sixteen questions, three probes</h2>
+<p><span class="math inline">\(R_\mathrm{diff} = \sum_d |I_B(d) - I_A(d)| / \sum_d I_A(d)\)</span>, over reflections grouped by <span class="math inline">\(d\)</span>. Probes: Cu Kα, 2<span class="math inline">\(\theta\)</span> <span class="math inline">\(\le 90\)</span>° (the thesis's range is not stated); neutrons, 1.594 Å, 2<span class="math inline">\(\theta\)</span> <span class="math inline">\(\le 160\)</span>° (D2B); X-rays, 0.354 Å, <span class="math inline">\(d \ge 0.5\)</span> Å (ID22). <span class="math inline">\(R\bar{3}m\)</span> is centrosymmetric, so X-ray anomalous terms are kept: they are real (Ni's f′ at Cu Kα, just below the Ni K edge) and create no artefact. Dopant cases put 0.03 per formula unit on the metal layer or on the lithium layer, the displaced Li going to the metal layer.</p>
+<div class="table-wrap">
+<table class="contrast caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Case</th>
+<th data-quarto-table-cell-role="th">The change between the two models</th>
+<th data-quarto-table-cell-role="th">Cu Kα (%)</th>
+<th data-quarto-table-cell-role="th">D2B (%)</th>
+<th data-quarto-table-cell-role="th">ID22 (%)</th>
+<th data-quarto-table-cell-role="th">D2B / Cu</th>
+<th data-quarto-table-cell-role="th">Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr id="c-li-ni-3" class="odd">
+<td class="mono">li-ni-3</td>
+<td>Li/Ni exchange of 3 % (0.03 Ni on the Li layer, 0.03 Li on the TM layer)</td>
+<td class="best">6.48</td>
+<td>5.66</td>
+<td>6.18</td>
+<td>0.9×</td>
+<td><a href="../gaps/index.html#F01">F01</a></td>
+</tr>
+<tr id="c-ni-li-def" class="even">
+<td class="mono">ni-li-def</td>
+<td>Li-deficient: 0.03 Ni on the Li layer, no Li on the TM layer (Li0.97Ni1.03)</td>
+<td class="best">5.26</td>
+<td>5.16</td>
+<td>5.18</td>
+<td>1×</td>
+<td><a href="../gaps/index.html#F01">F01</a></td>
+</tr>
+<tr id="c-exch-vs-def" class="odd">
+<td class="mono">exch-vs-def</td>
+<td>Where the displaced Li goes: Li/Ni exchange against a Li-deficient Li0.97Ni1.03O2 (0.03 Ni on the Li layer in both)</td>
+<td>5.41</td>
+<td class="best">5.73</td>
+<td>5.58</td>
+<td>1.1×</td>
+<td><a href="../gaps/index.html#F01">F01</a></td>
+</tr>
+<tr id="c-ni-or-mn-li" class="even">
+<td class="mono">ni-or-mn-li</td>
+<td>Which metal is in the Li layer: 0.03 Ni or 0.03 Mn (Li-deficient)</td>
+<td>0.21</td>
+<td class="best">6.86</td>
+<td>0.96</td>
+<td>32.8×</td>
+<td><a href="../gaps/index.html#F01">F01</a></td>
+</tr>
+<tr id="c-li-content" class="odd">
+<td class="mono">li-content</td>
+<td>Li content 0.95 per f.u. (vacancies on the Li layer)</td>
+<td>0.92</td>
+<td class="best">1.35</td>
+<td>0.73</td>
+<td>1.5×</td>
+<td><a href="../gaps/index.html#F02">F02</a></td>
+</tr>
+<tr id="c-o-z" class="even">
+<td class="mono">o-z</td>
+<td>Oxygen position z + 0.001 (slab thickness)</td>
+<td>1.63</td>
+<td class="best">4.03</td>
+<td>1.67</td>
+<td>2.5×</td>
+<td><a href="../gaps/index.html#F06">F06</a></td>
+</tr>
+<tr id="c-o-vac" class="odd">
+<td class="mono">o-vac</td>
+<td>Oxygen vacancies, 2 % (O1.96)</td>
+<td>1.05</td>
+<td class="best">2.12</td>
+<td>0.91</td>
+<td>2×</td>
+<td><a href="../gaps/index.html#F06">F06</a></td>
+</tr>
+<tr id="c-mn-ni" class="even">
+<td class="mono">mn-ni</td>
+<td>Mn/Ni ratio: 0.03 more Mn for Ni on the TM layer</td>
+<td>0.16</td>
+<td class="best">6.62</td>
+<td>0.89</td>
+<td>40.6×</td>
+<td><a href="../gaps/index.html#F03">F03</a></td>
+</tr>
+<tr id="c-co-ni" class="odd">
+<td class="mono">co-ni</td>
+<td>Co for Ni: 0.05 Co replacing Ni on the TM layer</td>
+<td>0.19</td>
+<td class="best">6.15</td>
+<td>0.51</td>
+<td>32.9×</td>
+<td><a href="../gaps/index.html#F03">F03</a></td>
+</tr>
+<tr id="c-mg-site" class="even">
+<td class="mono">mg-site</td>
+<td>Mg 0.03 on the TM layer or on the Li layer</td>
+<td>2.78</td>
+<td class="best">3.40</td>
+<td>2.13</td>
+<td>1.2×</td>
+<td><a href="../gaps/index.html#F04">F04</a></td>
+</tr>
+<tr id="c-na-site" class="odd">
+<td class="mono">na-site</td>
+<td>Na 0.03 on the Li layer (the thesis) or on the TM layer</td>
+<td>2.61</td>
+<td class="best">2.67</td>
+<td>1.95</td>
+<td>1×</td>
+<td><a href="../gaps/index.html#F04">F04</a></td>
+</tr>
+<tr id="c-fe-site" class="even">
+<td class="mono">fe-site</td>
+<td>Fe 0.03 on the TM layer or on the Li layer</td>
+<td class="best">6.43</td>
+<td>5.22</td>
+<td>5.55</td>
+<td>0.8×</td>
+<td><a href="../gaps/index.html#F05">F05</a></td>
+</tr>
+<tr id="c-sb-site" class="odd">
+<td class="mono">sb-site</td>
+<td>Sb 0.03 on the TM layer or on the Li layer</td>
+<td class="best">13.74</td>
+<td>3.49</td>
+<td>11.15</td>
+<td>0.3×</td>
+<td><a href="../gaps/index.html#F05">F05</a></td>
+</tr>
+<tr id="c-sc-site" class="even">
+<td class="mono">sc-site</td>
+<td>Sc 0.03 on the TM layer or on the Li layer</td>
+<td>5.21</td>
+<td class="best">6.46</td>
+<td>4.16</td>
+<td>1.2×</td>
+<td><a href="../gaps/index.html#F04">F04</a></td>
+</tr>
+<tr id="c-y-site" class="odd">
+<td class="mono">y-site</td>
+<td>Y 0.03 on the TM layer or on the Li layer</td>
+<td class="best">10.35</td>
+<td>4.47</td>
+<td>8.67</td>
+<td>0.4×</td>
+<td><a href="../gaps/index.html#F04">F04</a></td>
+</tr>
+<tr id="c-la-site" class="even">
+<td class="mono">la-site</td>
+<td>La 0.03 on the TM layer or on the Li layer</td>
+<td class="best">14.64</td>
+<td>4.69</td>
+<td>12.48</td>
+<td>0.3×</td>
+<td><a href="../gaps/index.html#F04">F04</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="reading" class="anchored">What the table says</h2>
+<ul>
+<li><strong>Li/Ni mixing is seen by every probe.</strong> A 3 % exchange changes the patterns by 5.7–6.5 %: nickel is heavy for X-rays too. That is why the laboratory ratio I(003)/I(104) responds to mixing at all; it does not make the ratio an occupancy.</li>
+<li><strong>Which metal is in the lithium layer is a neutron question</strong> (33×): Ni and Mn differ by three electrons but by 14 fm, of opposite sign.</li>
+<li><strong>The metal layer's composition is a neutron question</strong>: Mn for Ni 41×, Co for Ni 33×.</li>
+<li><strong>Oxygen is a neutron question</strong>: its position 2.5×, its vacancies 2×.</li>
+<li><strong>Heavy dopants are X-ray questions</strong>: Sb, Y and La on the lithium or the metal layer, 3–4× (the laboratory even more than the synchrotron at these energies). Mg and Sc are slightly neutron, Fe and Na even; their sites need the joint refinement and X-ray absorption.</li>
+<li><strong>Valences are nobody's diffraction question</strong>: Ni<span class="math inline">\(^{2}\)</span>⁺/Ni<span class="math inline">\(^{3}\)</span>⁺, Sb<span class="math inline">\(^{3}\)</span>⁺/Sb<span class="math inline">\(^{5}\)</span>⁺ and Fe<span class="math inline">\(^{3}\)</span>⁺ need the K edges (P4).</li>
+</ul>
+<p><span class="math inline">\(R_\mathrm{diff}\)</span> measures contrast, not precision. Where both probes see a parameter (the mixing), refining them together removes the correlations either leaves alone: with absorption, preferred orientation and displacement parameters in X-rays, with the Li occupancy in neutrons.</p>
+
+<h2 id="figure" class="anchored">The reference cathode, seen by the three probes</h2>
+<figure class="ga"><img src="../assets/figures/contrast-patterns.png" alt="Three powder patterns against Q with five times the change produced by a 3 % Li/Ni exchange and by 0.03 more Mn for Ni under each."><figcaption>Patterns of NMA from the same structure factors, pseudo-Voigt peaks of constant width (0.08°, 0.25°, 0.006°: illustrative), on a common <span class="math inline">\(Q\)</span> axis. The Li/Ni change shows in all three panels; the Mn/Ni change only in the neutron one. Script: <code>analysis/contrast.py</code>.</figcaption></figure>
+
+<h2 id="absorption" class="anchored">Natural lithium, cobalt, manganese</h2>
+<p>Natural lithium dominates the absorption (<span class="math inline">\(\approx 90\,\%\)</span>); with Mn (13 b) and Co (37 b) the NMA and NCA reach <span class="math inline">\(\mu R \approx 0.48\)</span> and 0.50 in an 8 mm vanadium can at 60 % packing: correctable, or a 6 mm can. ⁷Li would bring them to 0.04–0.06.</p>
+
+<h2 id="model" class="anchored">The model and its limits</h2>
+<p><span class="math inline">\(\mathrm{LiNi_{0.8}Mn_{0.15}Al_{0.05}O_2}\)</span> in <span class="math inline">\(R\bar{3}m\)</span> (hexagonal setting): Li 3a (0,0,0), metals 3b (0,0,½), O 6c (0,0,<span class="math inline">\(z\)</span> = 0.2586); <span class="math inline">\(a\)</span> = 2.870, <span class="math inline">\(c\)</span> = 14.200 Å, a typical NMA cell, since the thesis gives two incompatible ones for this powder; B = 1.0 (Li), 0.4 (metals), 0.6 Å² (O). Peak shapes, background, absorption and preferred orientation are not modelled.</p>
+</div>
+
+
+<!-- Closes the reading column opened by _gen/docs-nav.html, adds the right
+     "On this page" list, and wires: current-page marking in the left nav,
+     breadcrumbs, the page TOC (from h2/h3 in the reading column) and a
+     scroll-spy. Pure DOM, no library. -->
+  </div>
+  <aside class="docs-toc"><button class="docs-fold" type="button" data-fold="toc" aria-label="Hide the page outline" title="Hide the page outline">›</button><div class="t">On this page</div><ol></ol></aside>
+</div>
+<script>
+(function () {
+  /* 0. The two side panels fold on their chevrons; the choice is remembered in this browser. */
+  var docs = document.querySelector('.docs');
+  if (docs) {
+    var store = {};
+    try { store = JSON.parse(localStorage.getItem('docs-fold') || '{}'); } catch (e) { store = {}; }
+    function apply() {
+      docs.classList.toggle('nav-folded', !!store.nav);
+      docs.classList.toggle('toc-folded', !!store.toc);
+      document.querySelectorAll('.docs-fold').forEach(function (b) {
+        var which = b.getAttribute('data-fold'), folded = !!store[which];
+        b.innerHTML = (which === 'nav') === folded ? '&rsaquo;' : '&lsaquo;';
+        var what = which === 'nav' ? 'the navigation' : 'the page outline';
+        b.title = (folded ? 'Show ' : 'Hide ') + what; b.setAttribute('aria-label', b.title);
+      });
+    }
+    document.querySelectorAll('.docs-fold').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var which = b.getAttribute('data-fold'); store[which] = !store[which];
+        try { localStorage.setItem('docs-fold', JSON.stringify(store)); } catch (e) {}
+        apply();
+      });
+    });
+    apply();
+  }
+  /* 0b. The header ribbon: mark the entry whose section holds this page. Quarto rewrites the hrefs to
+     relative paths, so folders are read from the resolved URLs; the Overview link gives the site root. */
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.site-nav a'));
+    if (!links.length) return;
+    /* a served URL may end in '/' (GitHub Pages: …/about/); read it as …/about/index.html */
+    function folder(path) { if (/\/$/.test(path)) path += 'index.html'; var s = path.split('/').filter(Boolean); return s.length > 1 ? s[s.length - 2] : ''; }
+    var wm = document.querySelector('a.wordmark');            // the wordmark links to the site root
+    var root = folder((wm || links[0]).pathname);
+    var map = { rietveld: 'cases', drude: 'cases', dielectric: 'cases' };
+    function key(path) { var f = folder(path); if (f === root) return 'overview'; return map[f] || f; }
+    var here = key(location.pathname);
+    links.forEach(function (a) { a.classList.toggle('current', key(a.pathname) === here); });
+  })();
+
+  var main = document.querySelector('.docs-main');
+  var nav = document.querySelector('.docs-nav');
+  var toc = document.querySelector('.docs-toc ol');
+  if (!main || !nav || !toc) return;
+
+  /* 1. Left nav: mark the current page (and section, if the hash matches). */
+  var here = location.pathname.replace(/\/index\.html$/, '/');
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var pageLink = null, hashLink = null;
+  links.forEach(function (a) {
+    var p = a.pathname.replace(/\/index\.html$/, '/');
+    if (p !== here) return;
+    if (!a.hash && !pageLink) pageLink = a;
+    if (a.hash && a.hash === location.hash) hashLink = a;
+  });
+  var cur = hashLink || pageLink;
+  if (cur) {
+    cur.classList.add('current');
+    var det = cur.closest('details.group');
+    if (det) { det.open = true; det.classList.add('has-current'); }
+    /* Breadcrumbs: group title › page (› section). */
+    var crumbs = document.createElement('div');
+    crumbs.className = 'docs-crumbs';
+    var g = det ? det.querySelector('summary.t') : null;
+    var parts = [];
+    function push(t) { if (t && parts[parts.length - 1] !== t) parts.push(t); }
+    if (g) push(g.textContent.trim());
+    if (pageLink && pageLink !== cur) push(pageLink.textContent.trim());
+    push(cur.textContent.trim());
+    crumbs.innerHTML = parts.map(function (t, i) {
+      return (i ? '<span class="sep">›</span>' : '') + '<span>' + t.replace(/</g, '&lt;') + '</span>';
+    }).join('');
+    main.insertBefore(crumbs, main.firstChild);
+  }
+
+  /* 2. Right "On this page": h2 and h3 of the reading column. */
+  var used = {};
+  var heads = Array.prototype.slice.call(main.querySelectorAll('h2, h3')).filter(function (h) {
+    if (h.closest('.site-foot, .featured-band, .msg-grid, [data-toc="no"]')) return false;
+    if (h.classList.contains('unnumbered') || h.id === 'contenido') return false;
+    return h.textContent.trim().length > 0;
+  });
+  heads.forEach(function (h) {
+    if (!h.id) {
+      var s = h.textContent.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || 'sec';
+      while (used[s] || document.getElementById(s)) s += '-';
+      h.id = s;
+    }
+    used[h.id] = true;
+    var li = document.createElement('li');
+    if (h.tagName === 'H3') li.className = 'l3';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    /* This runs before KaTeX has rendered the headings, so a heading with mathematics still holds TeX
+       source: copy its markup, including the math spans, and let the page's KaTeX pass render the copy. */
+    var copy = h.cloneNode(true);
+    copy.querySelectorAll('.katex-mathml, annotation, .anchorjs-link').forEach(function (n) { n.remove(); });
+    var label = copy.textContent.trim().replace(/\s+/g, ' ');
+    if (copy.querySelector('.math, .math-done, .katex')) a.innerHTML = copy.innerHTML.trim();
+    else a.textContent = label.length > 72 ? label.slice(0, 70).replace(/[\s,;:]+\S*$/, '') + '…' : label;
+    a.title = label;
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  if (!heads.length) { document.querySelector('.docs-toc').hidden = true; return; }
+
+  /* 3. Scroll-spy. */
+  var items = Array.prototype.slice.call(toc.querySelectorAll('a'));
+  function spy() {
+    var y = window.scrollY + 120, best = null;
+    heads.forEach(function (h) { if (h.getBoundingClientRect().top + window.scrollY <= y) best = h; });
+    items.forEach(function (a) { a.classList.toggle('current', best && a.getAttribute('href') === '#' + best.id); });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  window.addEventListener('hashchange', spy);
+  spy();
+})();
+</script>
+<footer class="site-foot">
+  <div class="site-foot__inner">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <h4 class="anchored">What this is</h4>
+        <p>A proposal for discussion: Fadila El Kouihen's thesis on doped Ni-rich layered cathodes (UM6P, 2026), re-read for its crystallography, and the neutron and synchrotron experiments that would give it its structural answers. Abdessamad Faik (UM6P), Irene Urcelay-Olabarria and Josu M. Igartua (EHU).</p>
+        <div class="cite-block">Josu M. Igartua · Fisika Saila, EHU<br>josu.igartua@ehu.eus</div>
+      </div>
+      <div><h4 class="anchored">This site</h4><ul>
+        <li><a href="../index.html">Overview</a></li><li><a href="../thesis/index.html">Thesis</a></li><li><a href="../gaps/index.html">Gaps</a></li><li><a href="../contrast/index.html">Contrast</a></li><li><a href="../structures/index.html">Structures</a></li><li><a href="../proposals/index.html">Proposals</a></li><li><a href="../instruments/index.html">Instruments</a></li><li><a href="../app/index.html">App</a></li><li><a href="../sources/index.html">Sources</a></li>
+      </ul></div>
+      <div><h4 class="anchored">Facilities</h4><ul>
+        <li><a href="https://www.ill.eu/">ILL, Grenoble</a></li>
+        <li><a href="https://www.esrf.fr/">ESRF, Grenoble</a></li>
+        <li><a href="https://jmigartua.github.io/diff-ref-struct-site/">diff-ref-struct</a></li></ul></div>
+      <div><h4 class="anchored">Status</h4><ul>
+        <li>Draft for discussion, November 2026</li>
+        <li>Numbers from the revised manuscript of 17 October 2026</li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Abdessamad Faik, Irene Urcelay-Olabarria, Josu M. Igartua · draft</span>
+      <span>Quarto · family design kit</span>
+    </div>
+  </div>
+</footer>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+    tabsets.forEach(function(tabset) {
+      const tabby = new Tabby('#' + tabset.id);
+    });
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

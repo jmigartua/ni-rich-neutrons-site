@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>El Kouihen Cathode Structures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#F2F4F7; --surface:#FFFFFF; --ink:#17202B; --muted:#596476; --rule:#D3D9E1; --soft:#E8ECF1;
+  --rb:#6E52BD; --ba:#1F7399; --y:#3C8636; --lco:#7A5C2E; --lfe:#B04A6A; --lsub:#3C8636; --lsite:#6E52BD; --lss:#1F7399; --mark:#17202B;
+  --pn:#B5482A; --px:#94700A; --pa:#0E7C74; --pl:#7C8697; --pp:#7A6BA8; --po:#2B5FB8;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --cond:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0F131A; --surface:#171D26; --ink:#E5E9EF; --muted:#97A2B2; --rule:#2B3441; --soft:#1F2732;
+    --rb:#A890F2; --ba:#5DB3DA; --y:#7CC56E; --lco:#D9B27A; --lfe:#F08FB0; --lsub:#7CC56E; --lsite:#A890F2; --lss:#5DB3DA; --mark:#F4F6F9;
+    --pn:#F08A5D; --px:#E2B84A; --pa:#4FC1B5; --pl:#8F9AAB; --pp:#B0A4E0; --po:#7FA8F0;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0F131A; --surface:#171D26; --ink:#E5E9EF; --muted:#97A2B2; --rule:#2B3441; --soft:#1F2732;
+  --rb:#A890F2; --ba:#5DB3DA; --y:#7CC56E; --lco:#D9B27A; --lfe:#F08FB0; --lsub:#7CC56E; --lsite:#A890F2; --lss:#5DB3DA; --mark:#F4F6F9;
+  --pn:#F08A5D; --px:#E2B84A; --pa:#4FC1B5; --pl:#8F9AAB; --pp:#B0A4E0; --po:#7FA8F0;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--cond);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,4.2vw,42px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:22px;font-weight:600}
+h3{font-size:17px;font-weight:600}
+p{margin:0;max-width:72ch}
+sub,sup{font-size:.72em;line-height:0}
+.eyebrow{font-family:var(--cond);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.mono{font-family:var(--mono)}
+header{display:flex;flex-direction:column;gap:12px}
+.count{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;font-family:var(--mono);font-size:14px;color:var(--muted);margin-top:6px}
+.count b{color:var(--ink);font-weight:600;font-size:19px;margin-right:4px}
+section{display:flex;flex-direction:column;gap:16px}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+.lede{color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:18px}
+.scroll{overflow-x:auto}
+svg{display:block;max-width:100%;height:auto}
+svg text{font-family:var(--mono);fill:currentColor}
+svg .cond{font-family:var(--cond)}
+svg .sans{font-family:var(--sans)}
+svg .mut{fill:var(--muted)}
+figure{margin:0;display:flex;flex-direction:column;gap:10px}
+figcaption{color:var(--muted);font-size:13.5px;max-width:84ch}
+.note{font-size:13.5px;color:var(--muted)}
+
+/* sites */
+.sites{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.site{display:flex;flex-direction:column;gap:10px}
+.site-h{display:flex;flex-direction:column;gap:2px}
+.site-h .f{font-family:var(--mono);font-size:22px;font-weight:500}
+.occ{width:100%;min-width:0;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.occ th{font-family:var(--cond);font-weight:600;font-size:12.5px;color:var(--muted);text-align:right;padding:3px 6px;border-bottom:1px solid var(--rule)}
+.occ th:first-child,.occ td:first-child{text-align:left}
+.occ td{padding:3px 6px;text-align:right;font-family:var(--mono);border-bottom:1px solid var(--soft)}
+.verdict{font-size:13px;border-left:3px solid var(--rule);padding:4px 0 4px 10px}
+.verdict b{font-family:var(--cond);font-weight:600}
+.v-n{border-left-color:var(--pn)} .v-x{border-left-color:var(--px)} .v-a{border-left-color:var(--pa)}
+
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:16px}
+@media (max-width:960px){.two{grid-template-columns:1fr}}
+.keys{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted);align-items:center}
+.keys i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.keys i.dia{border-radius:1px;transform:rotate(45deg) scale(.85)}
+
+/* matrix */
+.toolbar{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:7px;overflow:hidden;background:var(--surface)}
+.seg button{font:500 13.5px var(--sans);color:var(--muted);background:none;border:0;padding:8px 14px;cursor:pointer;border-right:1px solid var(--rule)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--ba);outline-offset:-2px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;font-size:13px;color:var(--muted)}
+.probes{display:flex;flex-wrap:wrap;gap:4px 12px}
+.probes span{display:inline-flex;align-items:center;gap:5px}
+.probes .sq{width:10px;height:10px;border-radius:2px;display:inline-block}
+.families{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,540px),1fr));gap:16px}
+.fam{display:flex;flex-direction:column;gap:10px}
+.fam-head{display:flex;flex-direction:column;gap:3px}
+.fam-head .formula{font-family:var(--mono);font-size:13.5px;color:var(--muted)}
+.cell{cursor:pointer}
+.cell:focus{outline:none}
+.cell:focus-visible rect.box{stroke:var(--ba);stroke-width:3}
+.detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:18px 30px}
+@media (max-width:820px){.detail{grid-template-columns:1fr}}
+.detail .formula{font-family:var(--mono);font-size:clamp(16px,2.2vw,21px);font-weight:500;overflow-wrap:anywhere}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0;font-size:14px}
+.dl dt{color:var(--muted)}
+.dl dd{margin:0;font-family:var(--mono);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.dcol{display:flex;flex-direction:column;gap:12px}
+.dnotes{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:6px}
+.plan{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.plan li{display:grid;grid-template-columns:76px 1fr;gap:10px;font-size:14px;align-items:baseline}
+.ptag{font-family:var(--mono);font-size:12px;font-weight:600;border-radius:4px;padding:2px 6px;text-align:center;color:var(--surface)}
+.ptag small{font-weight:400;opacity:.85}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;border:1px solid var(--rule);border-radius:999px;padding:3px 10px;background:var(--soft)}
+.chip b{font-family:var(--mono);font-weight:600;margin-right:5px}
+.badge{font-family:var(--mono);font-size:11.5px;border:1px solid var(--ink);border-radius:3px;padding:1px 6px;margin-left:8px;vertical-align:2px}
+
+/* grid of questions */
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:720px}
+th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--rule)}
+th{font-family:var(--cond);font-weight:600;font-size:14px}
+.qg td.m,.qg th.m{text-align:center;width:72px;font-size:16px}
+.qg td.id{font-family:var(--mono);white-space:nowrap}
+.qg .pri{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* route */
+.route{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.step{flex:1 1 170px;background:var(--soft);border-radius:7px;padding:10px 12px;font-size:13px;display:flex;flex-direction:column;gap:4px}
+.step .k{font-family:var(--cond);font-weight:700;font-size:14.5px}
+.step .add{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.step.final{background:var(--ink);color:var(--bg)}
+.step.final .add{color:inherit;opacity:.75}
+.arrow{align-self:center;color:var(--muted);font-family:var(--mono);font-size:16px}
+/* circles and BPR */
+.circles{display:flex;flex-direction:column;gap:12px}
+.ex{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ex li{display:grid;grid-template-columns:52px 1fr;gap:10px;font-size:14px}
+.ex li b{font-family:var(--mono);font-weight:600}
+.bpr{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:16px}
+.bcol{display:flex;flex-direction:column;gap:10px}
+.bt td:first-child{color:var(--ink);font-weight:500;white-space:normal}
+footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--rule);padding-top:14px}
+@media (prefers-reduced-motion:no-preference){.cell rect.box{transition:stroke-width .12s}}
+
+.map-wrap{overflow-x:auto}
+.legend-lines{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted)}
+.legend-lines i{display:inline-block;width:14px;height:3px;margin-right:6px;vertical-align:3px}
+
+</style>
+</head>
+<body>
+<style>
+.sitebar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--surface);border-bottom:1px solid var(--rule)}
+.sitebar nav{max-width:1240px;margin:0 auto;padding:9px 20px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;font-size:13.5px}
+.sitebar a{color:var(--muted);text-decoration:none}
+.sitebar a:hover,.sitebar a:focus-visible{color:var(--ink);text-decoration:underline}
+.sitebar .home{font-family:var(--cond);font-weight:600;font-size:15px;color:var(--ink);margin-right:8px}
+.sitebar .here{color:var(--ink);font-weight:600}
+</style>
+<header class="sitebar"><nav aria-label="The project site">
+<a class="home" href="../index.html">&larr; ni-rich-neutrons &middot; where the nickel sits</a>
+<a href="../thesis/index.html">Thesis</a><a href="../gaps/index.html">Gaps</a><a href="../contrast/index.html">Contrast</a>
+<span class="here" aria-current="page">Structures</span><a href="../proposals/index.html">Proposals</a>
+<a href="../instruments/index.html">Instruments</a><a href="../app/index.html">App</a><a href="../sources/index.html">Sources</a>
+</nav></header>
+
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">Joint project UM6P · EHU · from Fadila El Kouihen's thesis to neutron and synchrotron beam time</span>
+  <h1>The 12 cathodes, as structures to be determined</h1>
+  <p class="lede">Fadila El Kouihen's thesis made cobalt-low NCA and cobalt-free NMA cathodes, doped them in four design lines and coated one for solid-state cells. It refined their cells on laboratory Cu Kα data and read their Li/Ni mixing from an intensity ratio, I(003)/I(104). Every argument it builds is about where the nickel goes. This page shows what each probe can see in these cathodes, what every material will be measured with, and which structural question each measurement answers.</p>
+  <div class="count"><span><b>12</b>materials</span><span><b>2</b>with a refined Li/Ni mixing, today</span><span><b>10</b>open structural questions</span><span><b>5</b>probes</span><span><b>≈ 25</b>shifts in the first round</span></div>
+</header>
+
+<section aria-labelledby="h-sites">
+  <div class="sec-head">
+    <h2 id="h-sites">Who can be told apart, layer by layer</h2>
+    <p class="lede">A powder pattern measures a site's total scattering. X-rays weigh each atom by its electrons, Z; neutrons by its coherent scattering length, b, which is negative for lithium and manganese. Two occupants of a site can be separated only by a probe in which they differ, and a valence by none: that needs the absorption edge.</p>
+  </div>
+  <div class="sites" id="sites"></div>
+</section>
+
+<section aria-labelledby="h-probe">
+  <div class="sec-head">
+    <h2 id="h-probe">What each probe sees, computed</h2>
+    <p class="lede">The NMA reference, LiNi<sub>0.8</sub>Mn<sub>0.15</sub>Al<sub>0.05</sub>O<sub>2</sub> in R3̄m. For each question, two models that differ by that question alone; the structure factors of both from diff-ref-struct's core; the change of the powder pattern measured.</p>
+  </div>
+  <div class="two">
+    <figure class="panel">
+      <svg id="weights" viewBox="0 0 420 260" role="img" aria-label="Share of the scattering power by element in X-rays and in neutrons for NMA."></svg>
+      <figcaption>Share of the scattering power, Σnf² for X-rays and Σnb² for neutrons. Nickel dominates both; in neutrons oxygen carries 42 % and manganese scatters with the opposite sign. Natural Li, Mn and Co absorb: μR ≈ <span id="mur"></span> in an 8 mm can, correctable.</figcaption>
+    </figure>
+    <figure class="panel">
+      <div class="keys"><span><i style="background:var(--pl)"></i>Cu Kα, 2θ ≤ 90°</span><span><i style="background:var(--pn)"></i>D2B neutrons, 1.594 Å</span><span><i class="dia" style="background:var(--px)"></i>ID22 X-rays, 0.354 Å</span></div>
+      <div class="scroll"><svg id="dots" viewBox="0 0 740 520" role="img" aria-label="Pattern change for sixteen structural questions in three probes, log scale."></svg></div>
+      <figcaption>R<sub>diff</sub> = Σ|I<sub>B</sub> − I<sub>A</sub>| / ΣI<sub>A</sub> over reflections grouped by d, log scale. The factor at the right compares D2B with Cu Kα when neutrons see more, the better X-ray probe with D2B when X-rays do; "alike" when the three are within 30 %. R<sub>diff</sub> measures contrast, not precision: where both probes see a parameter, refining them together removes what either leaves correlated.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section aria-labelledby="h-matrix">
+  <div class="sec-head">
+    <h2 id="h-matrix">The materials: what is known, what each will get</h2>
+    <p class="lede">The twelve materials as the thesis designed them: the cobalt line from NCA to the cobalt-free NMA, and the branches that dope or coat NCA and NMA. Colour by what the thesis determined, or by how many probes are planned. The squares under each value are the planned determinations. Select a material for what was refined, what does not close, and what each measurement will determine for it.</p>
+  </div>
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="Colour the cells by">
+      <button type="button" id="m-plan" data-mode="plan" aria-pressed="true">Probes planned</button>
+      <button type="button" id="m-i003" data-mode="i003" aria-pressed="false">I(003)/I(104)</button>
+      <button type="button" id="m-ni2" data-mode="ni2" aria-pressed="false">Ni²⁺ by charge balance</button>
+      <button type="button" id="m-ret" data-mode="ret" aria-pressed="false">Retention, 200 cycles</button>
+    </div>
+    <div class="legend">
+      <svg id="ramp" viewBox="0 0 280 40" width="280" aria-hidden="true"></svg>
+      <div class="probes"><span><i class="sq" style="background:var(--pn)"></i>D2B</span><span><i class="sq" style="background:var(--px)"></i>ID22</span><span><i class="sq" style="background:var(--po)"></i>operando</span><span><i class="sq" style="background:var(--pa)"></i>EXAFS</span><span><i class="sq" style="background:var(--pp)"></i>PDF</span></div>
+    </div>
+  </div>
+  <figure class="panel">
+    <div class="legend-lines"><span><i style="background:var(--lco)"></i>Co reduction (§II.6.1)</span><span><i style="background:var(--lfe)"></i>Fe/Sb co-doping (§II.6.2, II.6.5)</span><span><i style="background:var(--lsub)"></i>Mg, Y, La substitution (§II.6.3)</span><span><i style="background:var(--lsite)"></i>Sc, Na single-site (§II.6.4)</span><span><i style="background:var(--lss)"></i>LiNbO₃ coating, solid state (Ch. IV)</span></div>
+    <div class="map-wrap"><svg id="map" viewBox="0 0 920 360" role="img" aria-label="The twelve materials: NCA, 5 % and 10 % Mn–NCA and NMA in a line; Fe/Sb–NCA from NCA; Mg, Y, La, Sc, Na and Fe/Sb–NMA and the coated NMA from NMA."></svg></div>
+  </figure>
+  <p class="note">Cells with a bold frame are the key set K9, measured with high-resolution neutrons. "n/a": the thesis gives no value for that material in that mode. Ni²⁺ is computed from the nominal formula with the usual valences; the Fe/Sb–NMA formula as printed has 1.10 metals and gives 0.55.</p>
+  <div class="panel detail" id="detail" aria-live="polite"></div>
+</section>
+
+<section aria-labelledby="h-q">
+  <div class="sec-head">
+    <h2 id="h-q">Ten questions, five probes</h2>
+    <p class="lede">● the probe that answers the question; ○ one that does not answer it alone but fixes a quantity the answer needs (a composition, a lattice, a valence). "Home" is the work before beam time: the lithium balance, surface species, XPS and Mössbauer, lab XRD with an internal standard.</p>
+  </div>
+  <div class="panel scroll"><table class="qg" id="qgrid"></table></div>
+  <div class="panel circles">
+    <span class="eyebrow">How to read the circles</span>
+    <p>In the refinement sense: a ○ probe does not answer the question by itself, but measures something the answering probe's refinement needs, a fixed value that cuts down what the answer can be. In Rietveld terms it supplies a constraint or a restraint.</p>
+    <ul class="ex">
+      <li><b>F01</b><span><i>Where the nickel is.</i> D2B is ●: it refines Ni and Mn on both layers, and only neutrons tell Ni from Mn. ID22 is ○: it fixes the cell and the peak shape, and with resonant data at the Ni K edge gives an independent check. Home is ○: the ICP composition and charge balance bound how much Ni can be on the Li layer.</span></li>
+      <li><b>F02</b><span><i>How much lithium.</i> D2B and home are both ●: neutrons refine the Li occupancy of the bulk, the titration and washed ICP separate the surface lithium. Without the second, a Li deficit in the bulk and Li₂CO₃ on the surface look the same.</span></li>
+      <li><b>F03</b><span><i>The metal layer and the Ni valence.</i> D2B is ● for the Mn/Co/Ni occupancies; EXAFS is ● for the Ni²⁺ fraction, which charge balance predicts and the Ni K edge measures.</span></li>
+      <li><b>F05</b><span><i>Fe and Sb.</i> EXAFS is ●: Sb K and Fe K give valence and local site. Home (Mössbauer) and the joint refinement are ○: they close the formula that the valences must fit.</span></li>
+    </ul>
+    <p>So the circle is a supporting measurement: it does not see the answer, it removes the alternatives.</p>
+  </div>
+</section>
+
+<section aria-labelledby="h-bpr">
+  <div class="sec-head">
+    <span class="eyebrow">Bayesian probability refinement · BPR</span>
+    <h2 id="h-bpr">Each technique narrows what the structure can be</h2>
+    <p class="lede">Read the grid as probabilities. No single technique determines these cathodes, but each one rules out part of what they could be, and together they leave little room. The spirit enters twice: it decides which experiments to ask for, and later how their results are analysed together.</p>
+  </div>
+  <div class="bpr">
+    <div class="panel bcol">
+      <span class="eyebrow">Before the beam · design</span>
+      <h3>Choose the combination, not the instrument</h3>
+      <p>Every structural parameter has a probe that sees it (●) and others that remove what it trades off against (○). For the mixing both diffraction probes see it, so the design is the joint refinement; for the identity of the metal only neutrons see it; for the valence only the edge. The next step after the contrast computed above is the expected width of each answer for each combination, from the same structure factors with realistic counts.</p>
+    </div>
+    <div class="panel bcol">
+      <span class="eyebrow">After the beam · analysis</span>
+      <h3>One model, every measurement</h3>
+      <p>One structural model of each material, and every measurement a term in its probability: the ID22 and D2B patterns as two likelihoods sharing the cell and the metal layer; ICP, titration and XANES as priors on the composition, the surface lithium and the Ni valence, with their uncertainties. The result is a distribution: how much Ni sits on the Li layer, how much of it is Mn, how sure the combined data are.</p>
+    </div>
+  </div>
+  <div class="panel scroll">
+    <table class="bt">
+      <thead><tr><th>Parameter</th><th>Seen by (likelihood)</th><th>Narrowed by (prior, constraint)</th><th>What the combination removes</th></tr></thead>
+      <tbody>
+        <tr><td>Ni on the Li layer</td><td>D2B, ID22</td><td>ICP; charge balance; Ni K edge (Ni²⁺)</td><td>the correlation of mixing with displacement parameters, absorption and preferred orientation</td></tr>
+        <tr><td>Ni or Mn on the Li layer</td><td>D2B</td><td>ID22 resonant at the Ni K edge; ICP Mn</td><td>a metal on the Li layer of unknown identity</td></tr>
+        <tr><td>Li content</td><td>D2B</td><td>washed ICP; titration of LiOH and Li₂CO₃</td><td>surface lithium counted as bulk</td></tr>
+        <tr><td>Ni²⁺ fraction</td><td>Ni K XANES</td><td>refined Li-layer Ni; charge balance</td><td>a valence inferred from a formula</td></tr>
+        <tr><td>Dopant site (Y, La, Mg, Sc, Na)</td><td>ID22 (Y, La), D2B (Mg, Sc)</td><td>Y K, La K, Sc K EXAFS; second-phase fractions</td><td>a site read from a cell shift</td></tr>
+        <tr><td>Fe, Sb valence and the formula</td><td>Fe K, Sb K XANES</td><td>Mössbauer; ICP; joint refinement</td><td>a formula with 1.10 metals and an asserted Sb⁵⁺</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">diff-ref-struct already shows the path of a refinement in configuration space (its Explore module); the Bayesian layer, posterior distributions over the same parameters, is the extension this project would use first on real data.</p>
+</section>
+
+<section aria-labelledby="h-route">
+  <div class="sec-head">
+    <h2 id="h-route">From the samples to the beam, 2027</h2>
+    <p class="lede">Separate proposals that cite each other and the garnet proposals of the companion project. Shift counts are estimates, to be checked with each instrument's contact. A shift is 8 h.</p>
+  </div>
+  <div class="panel">
+    <div class="route">
+      <div class="step"><span class="k">P0 · at home</span>Lithium balance, surface species, XPS, Mössbauer, lab XRD with Si<span class="add">Nov 2026 – Feb 2027</span></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="step"><span class="k">ILL · 15 Feb 2027</span>P1 D2B, the key set K9 and two cycled electrodes (≈ 6 shifts)<span class="add">two-thirds of proposers from member countries</span></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="step"><span class="k">ESRF · 1 Mar 2027</span>P2 ID22, all twelve (≈ 4) · P3 operando ID31/ID15A (≈ 6) · P4 BM23 (≈ 9)<span class="add">Sc K on BM08 / BM20 · BM25 SpLine as the Spanish route</span></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="step"><span class="k">Beam</span>ILL cycle 202 (23 Mar – 24 May) or later; ESRF Aug 2027 – Feb 2028<span class="add">joint refinements in diff-ref-struct</span></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="step final"><span class="k">P5 · Sep 2027</span>The coated cathode in the solid-state cell: PDF, Nb K<span class="add">with the garnet strand of the joint project</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Thesis numbers: El Kouihen, PhD thesis, revised manuscript (17 October 2026), Tables II.3–II.10, III.1–III.2, Chapter IV; printed pages. Pattern changes: diff-ref-struct core (<span class="mono">drs sf</span>), NMA reference in R3̄m with a typical cell; scattering lengths from Sears, Neutron News 3 (1992) 26. Instruments and deadlines as read on the ILL and ESRF pages on 3 November 2026.</span>
+  <span>Abdessamad Faik (UM6P), Irene Urcelay-Olabarria and Josu M. Igartua (EHU) · working site: jmigartua.github.io/ni-rich-neutrons-site · companion: jmigartua.github.io/llzo-neutrons-site</span>
+</footer>
+</div>
+
+<script>
+(function(){
+const DATA=[{"id": "NCA", "name": "Pristine NCA", "group": "Co reduction (II.6.1)", "nominal": "LiNi0.8Co0.15Al0.05O2", "cells": [{"tables": "II.3, II.5", "a": 2.8815, "c": 14.2229, "c_a_printed": 4.9359, "V_printed": 102.27, "c_a": 4.9359, "V": 102.27, "V_agrees": true}], "i003": 1.05, "antisite": null, "chi2": 3.35, "lio": 2.363, "li": 0.932, "ni2": 0.0, "tm": 1.0, "ec": {"q1": 128, "ice": 63, "ret": 87.9, "cyc": 200}, "note": null, "plan": [["home", "P0", "lithium bulk and surface separated (ICP washed and unwashed, titration, TGA–MS); lab XRD with a Si standard"], ["ID22", "P2", "the cell with esd on one protocol for all twelve; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt)"], ["D2B", "P1", "Li, Ni and Mn on both layers with esd (Ni or Mn in the Li layer: 33× the X-ray contrast); Li occupancy; z(O)"], ["EXAFS", "P4", "Ni K, Co K: the mean Ni oxidation state against charge balance"]], "q": ["F01", "F02", "F03", "F07", "F08"], "k9": true}, {"id": "Mn5-NCA", "name": "5 % Mn–NCA", "group": "Co reduction (II.6.1)", "nominal": "LiNi0.8Co0.1Mn0.05Al0.05O2", "cells": [{"tables": "II.3", "a": 2.8817, "c": 14.2232, "c_a_printed": 4.9357, "V_printed": 102.29, "c_a": 4.9357, "V": 102.29, "V_agrees": true}], "i003": null, "antisite": null, "chi2": null, "lio": null, "li": 0.924, "ni2": 0.05, "tm": 1.0, "ec": null, "note": "Table II.3 prints the formula with Co0.15 (sum 1.05); the text and the ICP give Co0.10.", "plan": [["ID22", "P2", "the cell with esd on one protocol for all twelve; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt)"], ["EXAFS", "P4", "Ni K, Co K, Mn K: the mean Ni oxidation state against charge balance (0.05 Ni²⁺ predicted)"]], "q": ["F01", "F03", "F07", "F08"], "k9": false}, {"id": "Mn10-NCA", "name": "10 % Mn–NCA", "group": "Co reduction (II.6.1)", "nominal": "LiNi0.8Co0.05Mn0.1Al0.05O2", "cells": [{"tables": "II.3", "a": 2.899, "c": 14.3274, "c_a_printed": 4.9422, "V_printed": 104.28, "c_a": 4.9422, "V": 104.28, "V_agrees": true}], "i003": null, "antisite": null, "chi2": null, "lio": null, "li": 0.917, "ni2": 0.1, "tm": 1.0, "ec": null, "note": null, "plan": [["home", "P0", "lithium bulk and surface separated (ICP washed and unwashed, titration, TGA–MS); lab XRD with a Si standard"], ["ID22", "P2", "the cell with esd on one protocol for all twelve; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt)"], ["ID22", "P2", "resonant patterns just below the Ni K edge: Ni told from Mn and Co in X-rays"], ["D2B", "P1", "Li, Ni and Mn on both layers with esd (Ni or Mn in the Li layer: 33× the X-ray contrast); Li occupancy; z(O)"], ["EXAFS", "P4", "Ni K, Co K, Mn K: the mean Ni oxidation state against charge balance (0.1 Ni²⁺ predicted)"]], "q": ["F01", "F02", "F03", "F07", "F08"], "k9": true}, {"id": "NMA", "name": "Pristine NMA", "group": "Co reduction (II.6.1) · reference of II.6.3–II.6.5", "nominal": "LiNi0.8Mn0.15Al0.05O2", "cells": [{"tables": "II.3", "a": 2.9042, "c": 14.3489, "c_a_printed": 4.9407, "V_printed": 104.58, "c_a": 4.9407, "V": 104.81, "V_agrees": false}, {"tables": "II.7, II.9", "a": 2.86, "c": 14.3, "c_a_printed": 5.0, "V_printed": 101.3, "c_a": 5.0, "V": 101.3, "V_agrees": true}, {"tables": "II.8", "a": 2.86, "c": 14.3, "c_a_printed": 5.0, "V_printed": 102.6, "c_a": 5.0, "V": 101.3, "V_agrees": false}], "i003": 1.2, "antisite": 3.5, "chi2": 2.3, "lio": 2.391, "li": 0.908, "ni2": 0.15, "tm": 1.0, "ec": {"q1": 147, "ice": 98, "ret": 76.53, "cyc": 200}, "note": "Two incompatible cells for one powder: a = 2.9042 Å (Table II.3) and 2.860 Å (Tables II.7–II.9); Table II.8 also gives V = 102.6 Å³ where a and c give 101.3 Å³. χ² 2.3 (II.7, II.8) and 3.40 (II.9).", "plan": [["home", "P0", "lithium bulk and surface separated (ICP washed and unwashed, titration, TGA–MS); lab XRD with a Si standard"], ["ID22", "P2", "the cell with esd on one protocol for all twelve; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt)"], ["ID22", "P2", "resonant patterns just below the Ni K edge: Ni told from Mn and Co in X-rays"], ["D2B", "P1", "Li, Ni and Mn on both layers with esd (Ni or Mn in the Li layer: 33× the X-ray contrast); Li occupancy; z(O); the same after 200 cycles"], ["EXAFS", "P4", "Ni K, Mn K: the mean Ni oxidation state against charge balance (0.15 Ni²⁺ predicted)"], ["operando", "P3", "the c-axis collapse and the H2–H3 coexistence on the first charge to 4.5 V; the charged electrode heated: onset of the layered → spinel → rock-salt sequence"], ["PDF", "P5", "X-ray total scattering of the coating and the solid-state interface"]], "q": ["F01", "F02", "F03", "F06", "F07", "F08", "F09", "F10"], "k9": true}, {"id": "FeSb-NCA", "name": "Fe/Sb–NCA", "group": "Fe/Sb co-doping (II.6.2)", "nominal": "LiNi0.8Co0.05Fe0.05Sb0.05Al0.05O2", "cells": [{"tables": "II.5", "a": 2.882, "c": 14.2485, "c_a_printed": 4.944, "V_printed": 102.49, "c_a": 4.944, "V": 102.49, "V_agrees": true}], "i003": 1.3, "antisite": null, "chi2": 3.46, "lio": 2.375, "li": null, "ni2": 0.1, "tm": 1.0, "ec": {"q1": 143.5, "ice": 88.31, "ret": 87.11, "cyc": 200}, "note": "The text says c/a decreases from 4.944 to 4.9359; Table II.5 shows it increasing (NCA 4.9359 → Fe/Sb–NCA 4.944). Sb⁵⁺ is asserted, not measured. I(003)/I(104) of pristine NCA is 1.05, below the 1.2 threshold the text says it exceeds.", "plan": [["home", "P0", "lithium bulk and surface separated (ICP washed and unwashed, titration, TGA–MS); lab XRD with a Si standard; XPS Sb 3d, ⁵⁷Fe Mössbauer"], ["ID22", "P2", "the cell with esd on one protocol for all twelve; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt)"], ["D2B", "P1", "Li, Ni and Mn on both layers with esd (Ni or Mn in the Li layer: 33× the X-ray contrast); Li occupancy; z(O)"], ["EXAFS", "P4", "Ni K, Co K, Fe K, Sb K: the Sb valence (Sb³⁺ or Sb⁵⁺), Fe valence and site"]], "q": ["F01", "F02", "F05", "F07", "F08"], "k9": true}, {"id": "Mg-NMA", "name": "Mg–NMA", "group": "Multi-cation substitution (II.6.3)", "nominal": "LiNi0.8Mn0.12Mg0.03Al0.05O2", "cells": [{"tables": "II.7", "a": 2.852, "c": 14.31, "c_a_printed": 5.02, "V_printed": 100.83, "c_a": 5.0175, "V": 100.8, "V_agrees": true}], "i003": 1.28, "antisite": null, "chi2": 2.0, "lio": null, "li": null, "ni2": 0.09, "tm": 1.0, "ec": {"q1": 138, "ice": 81.56, "ret": 71.01, "cyc": 200}, "note": null, "plan": [["home", "P0", "lithium bulk and surface separated (ICP washed and unwashed, titration, TGA–MS); lab XRD with a Si standard"], ["ID22", "P2", "the cell with esd on one protocol for all twelve; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt)"], ["D2B", "P1", "Li, Ni and Mn on both layers with esd (Ni or Mn in the Li layer: 33× the X-ray contrast); Li occupancy; z(O); Mg on the Li or the metal layer"], ["EXAFS", "P4", "Ni K, Mn K: the mean Ni oxidation state against charge balance (0.09 Ni²⁺ predicted)"]], "q": ["F01", "F02", "F04", "F07", "F08"], "k9": true}, {"id": "Y-NMA", "name": "Y–NMA", "group": "Multi-cation substitution (II.6.3)", "nominal": "LiNi0.8Mn0.12Y0.03Al0.05O2", "cells": [{"tables": "II.7", "a": 2.86, "c": 14.35, "c_a_printed": 5.02, "V_printed": 101.65, "c_a": 5.0175, "V": 101.65, "V_agrees": true}], "i003": 1.35, "antisite": null, "chi2": 1.9, "lio": null, "li": null, "ni2": 0.12, "tm": 1.0, "ec": {"q1": 182, "ice": 94.15, "ret": 92.86, "cyc": 200}, "note": null, "plan": [["home", "P0", "lithium bulk and surface separated (ICP washed and unwashed, titration, TGA–MS); lab XRD with a Si standard"], ["ID22", "P2", "the cell with esd on one protocol for all twelve; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt, La- or Y-rich oxides); the site of Y (X-ray contrast 10–15 %)"], ["D2B", "P1", "Li, Ni and Mn on both layers with esd (Ni or Mn in the Li layer: 33× the X-ray contrast); Li occupancy; z(O)"], ["EXAFS", "P4", "Ni K, Y K: the coordination of Y, octahedral in the layer or in a second phase"], ["operando", "P3", "the c-axis collapse and the H2–H3 coexistence on the first charge to 4.5 V; the charged electrode heated: onset of the layered → spinel → rock-salt sequence"]], "q": ["F01", "F02", "F04", "F06", "F07", "F08", "F09"], "k9": true}, {"id": "La-NMA", "name": "La–NMA", "group": "Multi-cation substitution (II.6.3)", "nominal": "LiNi0.8Mn0.12La0.03Al0.05O2", "cells": [{"tables": "II.7", "a": 2.892, "c": 14.52, "c_a_printed": 5.02, "V_printed": 105.17, "c_a": 5.0207, "V": 105.17, "V_agrees": true}], "i003": 1.4, "antisite": 2.2, "chi2": 1.8, "lio": null, "li": null, "ni2": 0.12, "tm": 1.0, "ec": {"q1": 153, "ice": 81.32, "ret": 96.34, "cyc": 200}, "note": "La³⁺ (1.03 Å) on the octahedral TM site of a layered oxide is unusual; La-rich second phases are the usual alternative. The 1.1 % expansion of a is read as incorporation.", "plan": [["home", "P0", "lithium bulk and surface separated (ICP washed and unwashed, titration, TGA–MS); lab XRD with a Si standard"], ["ID22", "P2", "the cell with esd on one protocol for all twelve; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt, La- or Y-rich oxides); the site of La (X-ray contrast 10–15 %)"], ["ID22", "P2", "resonant patterns just below the Ni K edge: Ni told from Mn and Co in X-rays"], ["D2B", "P1", "Li, Ni and Mn on both layers with esd (Ni or Mn in the Li layer: 33× the X-ray contrast); Li occupancy; z(O); the same after 200 cycles"], ["EXAFS", "P4", "Ni K, La K: the coordination of La"], ["operando", "P3", "the c-axis collapse and the H2–H3 coexistence on the first charge to 4.5 V; the charged electrode heated: onset of the layered → spinel → rock-salt sequence"]], "q": ["F01", "F02", "F04", "F06", "F07", "F08", "F09"], "k9": true}, {"id": "Sc-NMA", "name": "Sc–NMA", "group": "Single-site doping (II.6.4)", "nominal": "LiNi0.8Mn0.12Sc0.03Al0.05O2", "cells": [{"tables": "II.8", "a": 2.872, "c": 14.42, "c_a_printed": 5.02, "V_printed": 103.5, "c_a": 5.0209, "V": 103.01, "V_agrees": false}], "i003": 1.32, "antisite": null, "chi2": 2.0, "lio": null, "li": null, "ni2": 0.12, "tm": 1.0, "ec": null, "note": "Sc assumed on the TM (Mn) site. No electrochemistry reported.", "plan": [["ID22", "P2", "the cell with esd on one protocol for all twelve; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt, La- or Y-rich oxides)"], ["EXAFS", "P4", "Ni K, Sc K (BM08 or BM20): the coordination of Sc"]], "q": ["F01", "F04", "F07", "F08"], "k9": false}, {"id": "Na-NMA", "name": "Na–NMA", "group": "Single-site doping (II.6.4)", "nominal": "Li0.97Na0.03Ni0.8Mn0.15Al0.05O2", "cells": [{"tables": "II.8", "a": 2.868, "c": 14.58, "c_a_printed": 5.08, "V_printed": 104.3, "c_a": 5.0837, "V": 103.86, "V_agrees": false}], "i003": 1.45, "antisite": null, "chi2": 1.9, "lio": null, "li": null, "ni2": 0.15, "tm": 1.0, "ec": null, "note": "Na assumed on the Li site; c expands by 2 % (14.30 → 14.58 Å). No electrochemistry reported.", "plan": [["home", "P0", "lithium bulk and surface separated (ICP washed and unwashed, titration, TGA–MS); lab XRD with a Si standard"], ["ID22", "P2", "the cell with esd on one protocol for all twelve; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt)"], ["D2B", "P1", "Li, Ni and Mn on both layers with esd (Ni or Mn in the Li layer: 33× the X-ray contrast); Li occupancy; z(O); Na on the Li layer"], ["EXAFS", "P4", "Ni K, Mn K: the mean Ni oxidation state against charge balance (0.15 Ni²⁺ predicted)"]], "q": ["F01", "F02", "F04", "F07", "F08"], "k9": true}, {"id": "FeSb-NMA", "name": "Fe/Sb–NMA", "group": "Fe/Sb co-doping (II.6.5)", "nominal": "LiNi0.8Mn0.15Sb0.05Fe0.05Al0.05O2", "cells": [{"tables": "II.9", "a": 2.91, "c": 14.37, "c_a_printed": 4.9381, "V_printed": 105.38, "c_a": 4.9381, "V": 105.38, "V_agrees": true}], "i003": 1.35, "antisite": null, "chi2": 3.42, "lio": 2.395, "li": null, "ni2": 0.55, "tm": 1.1, "ec": {"q1": 153, "ice": 80.85, "ret": 96.71, "cyc": 200}, "note": "The formula of §II.4.4 has 1.10 metals per formula unit; Table II.10's own theoretical wt% correspond to about Ni0.76Mn0.08Fe0.05Sb0.05Al0.06. Against the pristine row of Table II.9, a grows by 1.7 % and V by 4.0 %, while the text says the volume stays nearly unchanged.", "plan": [["home", "P0", "lithium bulk and surface separated (ICP washed and unwashed, titration, TGA–MS); lab XRD with a Si standard; XPS Sb 3d, ⁵⁷Fe Mössbauer"], ["ID22", "P2", "the cell with esd on one protocol for all twelve; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt)"], ["D2B", "P1", "Li, Ni and Mn on both layers with esd (Ni or Mn in the Li layer: 33× the X-ray contrast); Li occupancy; z(O)"], ["EXAFS", "P4", "Ni K, Mn K, Fe K, Sb K: the Sb valence, Fe valence and site"], ["operando", "P3", "the c-axis collapse and the H2–H3 coexistence on the first charge to 4.5 V; the charged electrode heated: onset of the layered → spinel → rock-salt sequence"]], "q": ["F01", "F02", "F03", "F05", "F06", "F07", "F08", "F09"], "k9": true}, {"id": "NMA@LNO", "name": "LiNbO₃-coated NMA", "group": "All-solid-state (IV.2–IV.3)", "nominal": "LiNi0.8Mn0.15Al0.05O2 + ≈1 wt% LiNbO3", "cells": [], "i003": null, "antisite": null, "chi2": null, "lio": null, "li": null, "ni2": 0.15, "tm": 1.0, "ec": {"note": "Li6PS5Cl electrolyte, Li–In anode; 73.8 % of capacity after 50 cycles against 60.1 % for pristine NMA (§IV.3.2)"}, "note": "No diffraction of the coated powder or of the composite is reported: coating thickness, crystallinity and Nb diffusion into the lattice are not determined.", "plan": [["ID22", "P2", "crystalline or amorphous LiNbO₃; the cell of the coated powder against the pristine"], ["EXAFS", "P4", "Nb K: the state and place of Nb"], ["PDF", "P5", "X-ray total scattering of the coating and the solid-state interface"]], "q": ["F08", "F10"], "k9": false}];
+const GAPS=[{"id": "F01", "t": "Where the nickel is: Li/Ni mixing measured, and which metal sits in the lithium layer", "p": 1}, {"id": "F02", "t": "How much lithium the cathodes contain", "p": 1}, {"id": "F03", "t": "The transition-metal layer: Mn, Co and Ni, and the oxidation state of Ni", "p": 1}, {"id": "F04", "t": "Where Mg, Na, Sc, Y and La go", "p": 2}, {"id": "F05", "t": "Fe and Sb: valence, site, and the formula", "p": 2}, {"id": "F06", "t": "Oxygen: the slab, vacancies, and oxygen release on heating", "p": 2}, {"id": "F07", "t": "One cell per powder", "p": 1}, {"id": "F08", "t": "Phase purity: surface lithium species, rock-salt, second phases", "p": 2}, {"id": "F09", "t": "What happens on cycling: the H2–H3 transition, the c collapse, Ni migration", "p": 2}, {"id": "F10", "t": "The coated cathode in the solid-state cell", "p": 3}];
+const CASES=[{"id": "li-ni-3", "question": "Li/Ni exchange of 3 % (0.03 Ni on the Li layer, 0.03 Li on the TM layer)", "gap": "F01", "R_diff_pct": {"lab": 6.479, "D2B": 5.663, "ID22": 6.176}, "neutron_over_lab": 0.9}, {"id": "ni-li-def", "question": "Li-deficient: 0.03 Ni on the Li layer, no Li on the TM layer (Li0.97Ni1.03)", "gap": "F01", "R_diff_pct": {"lab": 5.259, "D2B": 5.156, "ID22": 5.181}, "neutron_over_lab": 1.0}, {"id": "exch-vs-def", "question": "Where the displaced Li goes: Li/Ni exchange against a Li-deficient Li0.97Ni1.03O2 (0.03 Ni on the Li layer in both)", "gap": "F01", "R_diff_pct": {"lab": 5.409, "D2B": 5.729, "ID22": 5.585}, "neutron_over_lab": 1.1}, {"id": "ni-or-mn-li", "question": "Which metal is in the Li layer: 0.03 Ni or 0.03 Mn (Li-deficient)", "gap": "F01", "R_diff_pct": {"lab": 0.209, "D2B": 6.861, "ID22": 0.96}, "neutron_over_lab": 32.8}, {"id": "li-content", "question": "Li content 0.95 per f.u. (vacancies on the Li layer)", "gap": "F02", "R_diff_pct": {"lab": 0.921, "D2B": 1.347, "ID22": 0.734}, "neutron_over_lab": 1.5}, {"id": "o-z", "question": "Oxygen position z + 0.001 (slab thickness)", "gap": "F06", "R_diff_pct": {"lab": 1.627, "D2B": 4.029, "ID22": 1.669}, "neutron_over_lab": 2.5}, {"id": "o-vac", "question": "Oxygen vacancies, 2 % (O1.96)", "gap": "F06", "R_diff_pct": {"lab": 1.047, "D2B": 2.119, "ID22": 0.908}, "neutron_over_lab": 2.0}, {"id": "mn-ni", "question": "Mn/Ni ratio: 0.03 more Mn for Ni on the TM layer", "gap": "F03", "R_diff_pct": {"lab": 0.163, "D2B": 6.625, "ID22": 0.887}, "neutron_over_lab": 40.6}, {"id": "co-ni", "question": "Co for Ni: 0.05 Co replacing Ni on the TM layer", "gap": "F03", "R_diff_pct": {"lab": 0.187, "D2B": 6.152, "ID22": 0.506}, "neutron_over_lab": 32.9}, {"id": "mg-site", "question": "Mg 0.03 on the TM layer or on the Li layer", "gap": "F04", "R_diff_pct": {"lab": 2.779, "D2B": 3.4, "ID22": 2.135}, "neutron_over_lab": 1.2}, {"id": "na-site", "question": "Na 0.03 on the Li layer (the thesis) or on the TM layer", "gap": "F04", "R_diff_pct": {"lab": 2.607, "D2B": 2.669, "ID22": 1.947}, "neutron_over_lab": 1.0}, {"id": "fe-site", "question": "Fe 0.03 on the TM layer or on the Li layer", "gap": "F05", "R_diff_pct": {"lab": 6.433, "D2B": 5.224, "ID22": 5.548}, "neutron_over_lab": 0.8}, {"id": "sb-site", "question": "Sb 0.03 on the TM layer or on the Li layer", "gap": "F05", "R_diff_pct": {"lab": 13.736, "D2B": 3.488, "ID22": 11.151}, "neutron_over_lab": 0.3}, {"id": "sc-site", "question": "Sc 0.03 on the TM layer or on the Li layer", "gap": "F04", "R_diff_pct": {"lab": 5.206, "D2B": 6.463, "ID22": 4.157}, "neutron_over_lab": 1.2}, {"id": "y-site", "question": "Y 0.03 on the TM layer or on the Li layer", "gap": "F04", "R_diff_pct": {"lab": 10.348, "D2B": 4.47, "ID22": 8.671}, "neutron_over_lab": 0.4}, {"id": "la-site", "question": "La 0.03 on the TM layer or on the Li layer", "gap": "F04", "R_diff_pct": {"lab": 14.645, "D2B": 4.688, "ID22": 12.476}, "neutron_over_lab": 0.3}];
+const WEIGHTS={"xray": {"Li": 1.04, "Ni": 72.39, "Mn": 10.82, "Al": 0.98, "O": 14.77}, "neutron": {"Li": 2.28, "Ni": 53.54, "Mn": 1.32, "Al": 0.38, "O": 42.49}};
+const ABS={"NMA-Li": {"mu_cm-1": 1.998, "li_share_pct": 92.6, "muR_8mm_packing0.6": 0.48}, "NMA-7Li": {"mu_cm-1": 0.173, "li_share_pct": 15.0, "muR_8mm_packing0.6": 0.041}, "NCA-Li": {"mu_cm-1": 2.092, "li_share_pct": 88.5, "muR_8mm_packing0.6": 0.502}, "NCA-7Li": {"mu_cm-1": 0.267, "li_share_pct": 9.7, "muR_8mm_packing0.6": 0.064}};
+const NS='http://www.w3.org/2000/svg';
+function S(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);if(attrs)for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;if(parent)parent.appendChild(e);return e;}
+const PROBES=[['D2B','var(--pn)'],['ID22','var(--px)'],['operando','var(--po)'],['EXAFS','var(--pa)'],['PDF','var(--pp)']];
+const PTAG={home:['home','var(--pl)'],D2B:['D2B','var(--pn)'],ID22:['ID22','var(--px)'],operando:['operando','var(--po)'],EXAFS:['EXAFS','var(--pa)'],PDF:['PDF','var(--pp)']};
+const byId=Object.fromEntries(DATA.map(d=>[d.id,d]));
+const gapT=Object.fromEntries(GAPS.map(g=>[g.id,g]));
+const probesOf=d=>new Set(d.plan.map(p=>p[0]).filter(p=>p!=='home'));
+const fmt=v=>String(parseFloat((+v).toFixed(3)));
+
+const SITES=[
+ {f:'Li layer · 3a',h:'Li, and what may share it',occ:[['Li',3,-1.90],['Ni',28,10.30],['Mn',25,-3.73],['Na',11,3.63],['Mg',12,5.38]],v:'v-n',t:'<b>Ni seen by both; Ni against Mn only by neutrons.</b> 3 % Li/Ni exchange changes every pattern by ≈ 6 %; Ni or Mn on the layer is 33× more visible to neutrons. The Li itself: neutrons, 1.5×.'},
+ {f:'Metal layer · 3b',h:'Ni, Mn, Co, Al and the dopants',occ:[['Ni',28,10.30],['Mn',25,-3.73],['Co',27,2.49],['Al',13,3.45],['Fe',26,9.45],['Sb',51,5.57],['Sc',21,12.29],['Y',39,7.75],['La',57,8.24]],v:'v-x',t:'<b>Neutrons for Mn, Co, Ni; X-rays for the heavy dopants.</b> Mn/Ni and Co/Ni: 33–41× in neutrons. Sb, Y, La on one layer or the other: 3–4× in X-rays.'},
+ {f:'O · 6c',h:'the slab, and vacancies',occ:[['O',8,5.80]],v:'v-n',t:'<b>Neutrons.</b> Oxygen carries 42 % of the neutron scattering of NMA and 15 % of the X-ray one: its position 2.5×, its vacancies 2× more visible.'},
+ {f:'Valence',h:'not a diffraction quantity',occ:[['Ni K',8.33,null],['Mn K',6.54,null],['Sb K',30.49,null],['Fe K',7.11,null]],v:'v-a',t:'<b>X-ray absorption.</b> Ni²⁺/Ni³⁺, Mn⁴⁺, Sb³⁺/Sb⁵⁺, Fe³⁺: the K-edge positions and shapes (energies in keV), BM23.'}
+];
+function drawSites(){
+  document.getElementById('sites').innerHTML=SITES.map(s=>{const val=s.occ[0][2]===null;
+  return `<div class="panel site"><div class="site-h"><span class="f">${s.f}</span><span class="eyebrow">${s.h}</span></div>
+  <table class="occ"><thead><tr><th>${val?'edge':'occupant'}</th><th>${val?'keV':'Z'}</th><th>${val?'':'b (fm)'}</th></tr></thead><tbody>${s.occ.map(o=>`<tr><td>${o[0]}</td><td>${o[1]}</td><td>${o[2]===null?'':o[2].toFixed(2)}</td></tr>`).join('')}</tbody></table>
+  <div class="verdict ${s.v}">${s.t}</div></div>`;}).join('');
+}
+function drawWeights(){
+  const s=document.getElementById('weights');s.innerHTML='';
+  const els=['Ni','O','Mn','Li','Al'];const x0=60,W=330,y0=30,rh=40;
+  S('text',{x:x0,y:16,'font-size':11.5,class:'mut'},s,'% of the scattering power');
+  [0,25,50,75].forEach(v=>{const x=x0+W*v/75;S('line',{x1:x,x2:x,y1:y0-6,y2:y0+els.length*rh,stroke:'var(--rule)'},s);S('text',{x:x,y:y0+els.length*rh+16,'text-anchor':'middle','font-size':10.5,class:'mut'},s,String(v));});
+  els.forEach((e,i)=>{const y=y0+i*rh;const xr=WEIGHTS.xray[e],nr=WEIGHTS.neutron[e];
+    S('text',{x:x0-10,y:y+19,'text-anchor':'end','font-size':14,'font-weight':600},s,e);
+    S('rect',{x:x0,y:y+3,width:Math.max(1.5,W*xr/75),height:13,fill:'var(--pl)',rx:2},s);
+    S('rect',{x:x0,y:y+19,width:Math.max(1.5,W*nr/75),height:13,fill:'var(--pn)',rx:2},s);
+    S('text',{x:x0+Math.max(1.5,W*xr/75)+6,y:y+14,'font-size':11},s,xr.toFixed(1)+' X');
+    S('text',{x:x0+Math.max(1.5,W*nr/75)+6,y:y+30,'font-size':11},s,nr.toFixed(1)+' n');});
+  s.setAttribute('viewBox',`0 0 420 ${y0+els.length*rh+24}`);
+  document.getElementById('mur').textContent=ABS['NMA-Li']['muR_8mm_packing0.6'].toFixed(2)+' (NMA), '+ABS['NCA-Li']['muR_8mm_packing0.6'].toFixed(2)+' (NCA)';
+}
+const LAB={'li-ni-3':'3 % Li/Ni exchange','ni-li-def':'0.03 Ni on Li layer, Li-deficient','exch-vs-def':'where the displaced Li goes','ni-or-mn-li':'Ni or Mn on the Li layer','li-content':'Li 0.95 per f.u.','mn-ni':'+0.03 Mn for Ni, metal layer','co-ni':'0.05 Co for Ni, metal layer','o-z':'oxygen z + 0.001','o-vac':'oxygen vacancies 2 %','mg-site':'Mg: metal or Li layer','na-site':'Na: Li or metal layer','sc-site':'Sc: metal or Li layer','fe-site':'Fe: metal or Li layer','sb-site':'Sb: metal or Li layer','y-site':'Y: metal or Li layer','la-site':'La: metal or Li layer'};
+const GROUPS=[['The lithium layer',['li-ni-3','ni-li-def','exch-vs-def','ni-or-mn-li','li-content']],['The metal layer',['mn-ni','co-ni']],['Oxygen',['o-z','o-vac']],['Dopants: which layer',['mg-site','na-site','sc-site','fe-site','sb-site','y-site','la-site']]];
+function drawDots(){
+  const s=document.getElementById('dots');s.innerHTML='';
+  const C=Object.fromEntries(CASES.map(c=>[c.id,c]));
+  const xl=230,xr=640,lo=Math.log10(0.1),hi=Math.log10(20);const X=v=>xl+(Math.log10(Math.max(v,0.1))-lo)/(hi-lo)*(xr-xl);
+  let y=24;const top=y;
+  [0.2,0.5,1,2,5,10].forEach(v=>S('text',{x:X(v),y:12,'text-anchor':'middle','font-size':10.5,class:'mut'},s,v+' %'));
+  GROUPS.forEach(([g,ids])=>{
+    S('text',{x:4,y:y+12,'font-size':12,'font-weight':600,class:'cond'},s,g);y+=22;
+    ids.forEach(id=>{const c=C[id];if(!c)return;const r=c.R_diff_pct;
+      S('line',{x1:xl,x2:xr,y1:y,y2:y,stroke:'var(--soft)'},s);
+      S('text',{x:xl-10,y:y+4,'text-anchor':'end','font-size':11.5,class:'sans'},s,LAB[id]||id);
+      const vals=[r.lab,r.D2B,r.ID22];const mn=Math.min(...vals),mx=Math.max(...vals);
+      S('line',{x1:X(mn),x2:X(mx),y1:y,y2:y,stroke:'var(--rule)','stroke-width':2},s);
+      S('circle',{cx:X(r.lab),cy:y,r:5,fill:'var(--pl)'},s);
+      S('rect',{x:X(r.ID22)-4.5,y:y-4.5,width:9,height:9,fill:'var(--px)',transform:`rotate(45 ${X(r.ID22)} ${y})`},s);
+      S('circle',{cx:X(r.D2B),cy:y,r:5.5,fill:'var(--pn)'},s);
+      let tag,col;
+      if(mx/mn<1.3){tag='alike';col='var(--muted)';}
+      else if(r.D2B>=Math.max(r.lab,r.ID22)){const f=r.D2B/r.lab;tag='neutrons '+(f>=10?f.toFixed(0):f.toFixed(1))+'×';col='var(--pn)';}
+      else{const f=Math.max(r.lab,r.ID22)/r.D2B;tag='X-rays '+(f>=10?f.toFixed(0):f.toFixed(1))+'×';col='var(--px)';}
+      S('text',{x:xr+12,y:y+4,'font-size':11.5,'font-weight':600,style:'fill:'+col},s,tag);
+      y+=22;});
+    y+=6;});
+  [0.2,0.5,1,2,5,10].forEach(v=>S('line',{x1:X(v),x2:X(v),y1:top-6,y2:y-8,stroke:'var(--rule)','stroke-dasharray':'2 3'},s));
+  s.setAttribute('viewBox',`0 0 740 ${y}`);
+}
+
+/* the materials map */
+const RAMP={light:['#ECFAFC','#B5E6EE','#6FC6D6','#2C93AB','#155E73'],dark:['#10262B','#164A55','#22788A','#4FB3C6','#BDEFF7']};
+const MODES={
+  plan:{lo:1,hi:5,f:d=>probesOf(d).size,ticks:[1,2,3,4,5],lab:d=>String(probesOf(d).size)},
+  i003:{lo:1.0,hi:1.5,f:d=>d.i003,ticks:[1.0,1.1,1.2,1.3,1.4,1.5],lab:d=>d.i003==null?'n/a':d.i003.toFixed(2)},
+  ni2:{lo:0,hi:0.2,f:d=>d.tm>1.001?null:d.ni2,ticks:[0,0.05,0.1,0.15,0.2],lab:d=>d.tm>1.001?'0.55*':fmt(d.ni2)},
+  ret:{lo:70,hi:100,f:d=>d.ec&&d.ec.ret!=null?d.ec.ret:null,ticks:[70,80,90,100],lab:d=>d.ec&&d.ec.ret!=null?d.ec.ret.toFixed(1)+'%':'n/a'}
+};
+let mode='plan',sel='La-NMA';
+try{const m=localStorage.getItem('kcs-mode');if(m&&MODES[m])mode=m;}catch(e){}
+const isDark=()=>{const t=document.documentElement.getAttribute('data-theme');if(t==='dark')return true;if(t==='light')return false;return matchMedia('(prefers-color-scheme: dark)').matches;};
+const hex=h=>[1,3,5].map(k=>parseInt(h.slice(k,k+2),16));
+function ramp(t){const st=RAMP[isDark()?'dark':'light'];t=Math.max(0,Math.min(1,t));const p=t*(st.length-1),k=Math.min(st.length-2,Math.floor(p)),f=p-k;const a=hex(st[k]),b=hex(st[k+1]);return'rgb('+a.map((v,j)=>Math.round(v+(b[j]-v)*f)).join(',')+')';}
+function textOn(rgb){const c=rgb.match(/\d+/g).map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);});const L=.2126*c[0]+.7152*c[1]+.0722*c[2];return L>.3?'#17202B':'#FFFFFF';}
+const norm=(m,v)=>(v-m.lo)/(m.hi-m.lo);
+const W=104,H=78;
+const POS={'NCA':[20,40],'Mn5-NCA':[150,40],'Mn10-NCA':[280,40],'NMA':[430,140],'FeSb-NCA':[20,200],
+  'Mg-NMA':[610,20],'Y-NMA':[610,110],'La-NMA':[610,200],'Sc-NMA':[750,20],'Na-NMA':[750,110],'FeSb-NMA':[750,200],'NMA@LNO':[430,272]};
+const LINKS=[['NCA','Mn5-NCA','--lco'],['Mn5-NCA','Mn10-NCA','--lco'],['Mn10-NCA','NMA','--lco'],['NCA','FeSb-NCA','--lfe'],['NMA','FeSb-NMA','--lfe'],
+  ['NMA','Mg-NMA','--lsub'],['NMA','Y-NMA','--lsub'],['NMA','La-NMA','--lsub'],['NMA','Sc-NMA','--lsite'],['NMA','Na-NMA','--lsite'],['NMA','NMA@LNO','--lss']];
+function drawMap(){
+  const s=document.getElementById('map');s.innerHTML='';const m=MODES[mode];
+  const c=id=>[POS[id][0]+W/2,POS[id][1]+H/2];
+  LINKS.forEach(([a,b,col])=>{const [x1,y1]=c(a),[x2,y2]=c(b);
+    const path=Math.abs(y1-y2)<1?`M${x1},${y1} L${x2},${y2}`:(Math.abs(x1-x2)<1?`M${x1},${y1} L${x2},${y2}`:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`);
+    S('path',{d:path,fill:'none',stroke:'var('+col+')','stroke-width':2.5,opacity:.8},s);});
+  DATA.forEach(d=>cell(s,d,POS[d.id][0],POS[d.id][1],m));
+}
+function cell(s,d,x,y,m){
+  const v=m.f(d);const na=(v==null||Number.isNaN(v));
+  const fill=na?'var(--soft)':ramp(norm(m,v));const tc=na?'var(--muted)':textOn(fill);const on=d.id===sel;
+  const g=S('g',{class:'cell',tabindex:'0',role:'button','aria-pressed':on?'true':'false','aria-label':label(d)},s);
+  S('rect',{class:'box',x,y,width:W,height:H,rx:5,fill,stroke:on?'var(--mark)':(d.k9?'var(--ink)':'var(--rule)'),'stroke-width':on?3.2:(d.k9?1.8:1)},g);
+  S('text',{x:x+W/2,y:y+17,'text-anchor':'middle','font-size':12,'font-weight':600,class:'cond',style:'fill:'+tc},g,d.name);
+  S('text',{x:x+W/2,y:y+42,'text-anchor':'middle','font-size':15,'font-weight':500,style:'fill:'+tc},g,m.lab(d));
+  const ps=probesOf(d);const sq=8,gap=3,tot=PROBES.length*sq+(PROBES.length-1)*gap;let px=x+(W-tot)/2;const py=y+H-15;
+  PROBES.forEach(([p,col])=>{const has=ps.has(p);S('rect',{x:px,y:py,width:sq,height:sq,rx:1.5,fill:has?col:'none',stroke:has?'none':(na?'var(--rule)':tc),'stroke-opacity':.45},g);px+=sq+gap;});
+  const pick=()=>{if(sel!==d.id){sel=d.id;renderMatrix(d.id);}};
+  g.addEventListener('click',pick);
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();}});
+}
+function label(d){return `${d.name}, ${probesOf(d).size} probes planned`;}
+const formula=n=>n.replace(/([A-Z][a-z]?)(\d[\d.]*)/g,'$1<sub>$2</sub>');
+function detail(){
+  const d=byId[sel],box=document.getElementById('detail');
+  const rows=[];
+  (d.cells||[]).forEach(c=>rows.push([`Cell (${c.tables})`,`a ${c.a} · c ${c.c} Å · c/a ${c.c_a.toFixed(3)} · V ${c.V_printed} Å³`+(c.V_agrees?'':` (a, c give ${c.V})`)]));
+  if(!(d.cells||[]).length)rows.push(['Cell','no diffraction reported']);
+  if(d.i003!=null)rows.push(['I(003)/I(104)',d.i003.toFixed(2)]);
+  if(d.antisite!=null)rows.push(['Li/Ni antisite',d.antisite+' % (refined)']);
+  if(d.chi2!=null)rows.push(['χ²',String(d.chi2)]);
+  if(d.lio!=null)rows.push(['Li–O',d.lio+' Å']);
+  if(d.li!=null)rows.push(['Li per f.u. (ICP)',d.li.toFixed(3)]);
+  rows.push(['Ni²⁺ by charge',fmt(d.ni2)+(d.tm>1.001?` (formula with ${d.tm} metals)`:'')]);
+  if(d.ec&&d.ec.q1!=null)rows.push(['Q₁ · ICE · retention',`${d.ec.q1} mAh g⁻¹ · ${d.ec.ice} % · ${d.ec.ret} % (${d.ec.cyc} cycles)`]);
+  else if(d.ec&&d.ec.note)rows.push(['Cell test',d.ec.note]);
+  rows.push(['Not refined','dopant sites, Ni valence, bulk Li, oxygen occupancy'+(d.antisite==null?', Li/Ni mixing':'')]);
+  box.innerHTML=`<div class="dcol"><span class="eyebrow">${d.group}${d.k9?'<span class="badge">K9</span>':''}</span><div class="formula">${formula(d.nominal)}</div>
+  <span class="eyebrow">What the thesis determined (lab Cu Kα, calcined powder)</span>
+  <dl class="dl">${rows.map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('')}</dl>
+  ${d.note?`<ul class="dnotes"><li>${d.note}</li></ul>`:''}</div>
+  <div class="dcol"><span class="eyebrow">What it will be measured with, and what each determines</span>
+  <ul class="plan">${d.plan.map(([p,pr,w])=>`<li><span class="ptag" style="background:${PTAG[p][1]}">${PTAG[p][0]} <small>${pr}</small></span><span>${w}</span></li>`).join('')}</ul>
+  <span class="eyebrow">The open questions it carries</span>
+  <div class="chips">${d.q.map(q=>`<span class="chip" title="${gapT[q].t}"><b>${q}</b>${gapT[q].t}</span>`).join('')}</div></div>`;
+}
+function drawRamp(){
+  const s=document.getElementById('ramp');s.innerHTML='';const m=MODES[mode];
+  const defs=S('defs',null,s);const lg=S('linearGradient',{id:'lg',x1:'0',x2:'1',y1:'0',y2:'0'},defs);
+  for(let k=0;k<=10;k++)S('stop',{offset:k/10,'stop-color':ramp(k/10)},lg);
+  S('rect',{x:10,y:4,width:260,height:12,rx:3,fill:'url(#lg)',stroke:'var(--rule)'},s);
+  m.ticks.forEach(v=>{const px=10+260*norm(m,v);S('line',{x1:px,x2:px,y1:16,y2:21,stroke:'var(--muted)'},s);S('text',{x:px,y:33,'text-anchor':'middle','font-size':11,class:'mut'},s,String(v));});
+}
+function renderMatrix(focusId){
+  drawMap();drawRamp();detail();
+  document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode?'true':'false'));
+  if(focusId){const want=[...document.querySelectorAll('#map .cell')].find(c=>c.getAttribute('aria-label')===label(byId[focusId]));if(want)want.focus({preventScroll:true});}
+}
+document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;try{localStorage.setItem('kcs-mode',mode);}catch(e){}renderMatrix();}));
+
+const QP={F01:{home:1,D2B:2,ID22:1},F02:{home:2,D2B:2,ID22:1},F03:{D2B:2,EXAFS:2},F04:{D2B:1,ID22:2,EXAFS:2},F05:{home:1,D2B:1,ID22:1,EXAFS:2},F06:{D2B:2,operando:2},F07:{home:1,ID22:2},F08:{home:1,ID22:2},F09:{D2B:1,operando:2},F10:{ID22:1,EXAFS:2,PDF:2}};
+const COLS=['home','D2B','ID22','operando','EXAFS','PDF'];
+function drawGrid(){
+  const t=document.getElementById('qgrid');
+  t.innerHTML=`<thead><tr><th>Question</th><th></th>${COLS.map(c=>`<th class="m" style="color:${PTAG[c][1]}">${c}</th>`).join('')}</tr></thead><tbody>`+
+  GAPS.map(g=>`<tr><td class="id">${g.id}</td><td>${g.t}<br><span class="pri">priority ${g.p}</span></td>${COLS.map(c=>{const v=(QP[g.id]||{})[c];return `<td class="m" style="color:${PTAG[c][1]}">${v===2?'●':v===1?'○':''}</td>`;}).join('')}</tr>`).join('')+'</tbody>';
+}
+function renderAll(){drawSites();drawWeights();drawDots();renderMatrix();drawGrid();}
+renderAll();
+try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',renderAll);}catch(e){}
+new MutationObserver(()=>{drawWeights();drawDots();renderMatrix();}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+/* Rules of this project only; theme.css and site.css are the family kit, copied unchanged.
+   Its own identity: deep cyan primary on the family kit (the kit names its primary token --teal for history; here it
+   carries cyan), the kit's slate as the second accent, ochre for "warn". */
+:root {
+  --teal: #0e7490; --teal-soft: #0891b2; --amber: #2f4858;
+  --ok: #2e6b5e; --warn: #8a6a00; --bad: #9a3f3f;
+  --orange-tint: #ecfeff; --violet-tint: #ecfeff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --teal: #67e8f9; --teal-soft: #a5f3fc; --amber: #9fb3c4;
+    --ok: #7fc4b3; --warn: #e3c15a; --bad: #e08a8a;
+    --orange-tint: #102a30; --violet-tint: #102a30;
+  }
+}
+
+/* The brief as theses. */
+.req-list { list-style: none; padding-left: 0; }
+.req-list li { padding-left: 52px; text-indent: -52px; }
+.req-list .num { display: inline-block; width: 44px; text-indent: 0; font-family: var(--mono); font-size: 12px; color: var(--teal); letter-spacing: 0.04em; }
+.req-list .src { text-indent: 0; font-size: 13.5px; color: var(--ink-faint); margin-top: 2px; }
+.verbatim { border-left: 3px solid var(--teal); background: var(--tint); padding: 12px 18px; margin: 14px 0 22px; font-family: var(--serif); font-size: 16.5px; white-space: pre-wrap; }
+.verbatim .who { display: block; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; white-space: normal; }
+
+/* Sources: key, reference, status, use. */
+.nc { font-family: var(--mono); font-size: 12px; color: var(--warn); }
+.m { color: var(--ink-faint); font-size: 13px; }
+.sources { table-layout: fixed; }
+.sources th:nth-child(1) { width: 13%; } .sources th:nth-child(2) { width: 42%; }
+.sources th:nth-child(3) { width: 15%; } .sources th:nth-child(4) { width: 30%; }
+.sources td { overflow-wrap: anywhere; vertical-align: top; }
+.status-src-read { color: var(--ok); border-color: var(--ok); }
+.status-src-checked { color: var(--teal); border-color: var(--teal); }
+.status-src-not-checked { color: var(--warn); border-color: var(--warn); }
+.status-answered, .status-agreed { color: var(--ok); border-color: var(--ok); }
+.status-dropped { color: var(--ink-faint); border-color: var(--ink-faint); }
+
+/* Shared label. */
+.lbl { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 3px; }
+.pid { font-family: var(--mono); font-size: 12px; color: var(--teal); letter-spacing: 0.04em; }
+.whose { font-size: 13px; color: var(--ink-soft); font-style: italic; }
+
+/* Ideas. */
+.idea, .crit, .dec { border: 1px solid var(--line-soft); border-left: 4px solid var(--teal); padding: 14px 18px 10px; margin: 18px 0; background: var(--paper); scroll-margin-top: calc(var(--head-h, 92px) + 12px); }
+.idea-head, .crit-head { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.idea h3, .crit h3, .dec h3 { margin: 6px 0 10px; font-size: 19px; line-height: 1.3; }
+.idea p, .crit p, .dec p { margin: 0 0 8px; font-size: 15.5px; }
+.idea ul, .crit ul, .dec ul { margin: 0 0 8px; font-size: 15.5px; }
+.idea-strand { font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); }
+.idea-f { border-top: 1px dashed var(--line-soft); padding-top: 8px; margin-top: 8px; }
+.idea-f p { font-size: 14.5px; color: var(--ink-soft); }
+
+/* Critique: the edge carries the severity. */
+.sev-high { border-left-color: var(--bad); } .sev-medium { border-left-color: var(--warn); } .sev-low { border-left-color: var(--line); }
+.sev { font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; border: 1px solid currentColor; padding: 1px 7px; border-radius: 2px; }
+.sev-high .sev { color: var(--bad); } .sev-medium .sev { color: var(--warn); } .sev-low .sev { color: var(--ink-faint); }
+.crit-fix, .dec-rec { background: var(--orange-tint); border: 1px solid var(--line-soft); padding: 8px 12px 2px; margin: 8px 0; }
+.crit-fix .lbl, .dec-rec .lbl { color: var(--teal); }
+.dec-ans { background: var(--tint); border-left: 3px solid var(--ok); padding: 8px 12px 2px; margin: 8px 0; }
+.dec { border-left-color: var(--amber); }
+.dec-opts li { margin-bottom: 4px; }
+.crit .src { font-size: 13px; color: var(--ink-faint); }
+.mono { font-family: var(--mono); font-size: 12.5px; }
+.sibling-only { display: none !important; }
+.ga { margin: 8px 0 22px; }
+.ga img { display: block; width: 100%; max-width: 960px; border: 1px solid var(--line-soft); background: #fff; }
+.ga figcaption { font-size: 13.5px; color: var(--ink-faint); margin-top: 6px; max-width: 960px; }
+
+/* Fact base, gaps, contrast, proposals, instruments (this project). */
+.facts-table { font-size: 12.5px; }
+.facts-table td, .facts-table th { white-space: nowrap; padding: 3px 7px; vertical-align: top; }
+.facts-table td.mono { font-size: 11.5px; }
+.flag { display: inline-block; font-family: var(--mono); font-size: 10.5px; color: var(--warn); border: 1px dashed var(--warn); border-radius: 2px; padding: 0 4px; margin-left: 3px; }
+.gap, .prop { border: 1px solid var(--line-soft); border-left: 4px solid var(--teal); padding: 14px 18px 10px; margin: 18px 0; background: var(--paper); scroll-margin-top: calc(var(--head-h, 92px) + 12px); }
+.gap h3, .prop h3 { margin: 6px 0 10px; font-size: 19px; line-height: 1.3; }
+.gap p, .prop p, .gap ul, .prop ul { margin: 0 0 8px; font-size: 15px; }
+.gap.pri-2 { border-left-color: var(--amber); } .gap.pri-3 { border-left-color: var(--line); }
+.gap .sev { color: var(--ink-faint); }
+.cchip { display: inline-block; font-family: var(--mono); font-size: 11.5px; border: 1px solid var(--line-soft); border-radius: 3px; padding: 2px 7px; margin: 2px 6px 2px 0; background: var(--tint); }
+.cchip .ck { color: var(--teal); margin-right: 6px; }
+.contrast td.best { font-weight: 700; color: var(--teal); }
+.contrast td, .contrast th, .weights td, .weights th { vertical-align: top; }
+.contrast td:nth-child(n+3):nth-child(-n+6) { text-align: right; font-family: var(--mono); font-size: 13px; }
+.instr { table-layout: fixed; font-size: 14px; }
+.instr th:nth-child(1) { width: 20%; } .instr th:nth-child(2) { width: 36%; } .instr th:nth-child(3) { width: 24%; } .instr th:nth-child(4) { width: 14%; } .instr th:nth-child(5) { width: 6%; }
+.instr td { vertical-align: top; overflow-wrap: anywhere; }
+.fit { font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase; border: 1px solid currentColor; border-radius: 2px; padding: 0 5px; }
+.fit-primary { color: var(--teal); } .fit-alternative { color: var(--amber); } .fit-second-round { color: var(--ink-faint); } .fit-not-now { color: var(--ink-faint); }
+.keyfig { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 14px 0 22px; }
+.keyfig div { border: 1px solid var(--line-soft); border-top: 3px solid var(--teal); padding: 10px 14px; }
+.keyfig .v { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--teal); }
+.keyfig .k { font-size: 13.5px; color: var(--ink-soft); }
+.claim { width: 100%; table-layout: fixed; font-size: 14.5px; }
+.claim th:nth-child(1) { width: 30%; } .claim th:nth-child(2) { width: 34%; } .claim th:nth-child(3) { width: 36%; }
+.claim td { vertical-align: top; }
+.verdict-m { color: var(--ok); font-weight: 600; } .verdict-i { color: var(--warn); font-weight: 600; } .verdict-n { color: var(--bad); font-weight: 600; }
+.gantt { table-layout: fixed; font-size: 13px; }
+.gantt th:first-child { width: 30%; text-align: left; }
+.gantt td { text-align: center; padding: 4px 2px; }
+.gantt td.on { background: var(--teal); } .gantt td.lite { background: var(--violet-tint); } .gantt td.ms { font-family: var(--mono); font-size: 11px; color: var(--teal); }
