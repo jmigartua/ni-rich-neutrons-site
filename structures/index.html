@@ -137,6 +137,43 @@ th{font-family:var(--cond);font-weight:600;font-size:14px}
 .bpr{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:16px}
 .bcol{display:flex;flex-direction:column;gap:10px}
 .bt td:first-child{color:var(--ink);font-weight:500;white-space:normal}
+/* reading guide of the matrix */
+.howto{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:4px;font:500 13.5px var(--sans);color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:5px 14px 5px 6px;cursor:pointer}
+.howto .qm{width:21px;height:21px;border-radius:50%;background:var(--ink);color:var(--bg);display:inline-grid;place-items:center;font:600 12px var(--mono)}
+.howto:hover{border-color:var(--muted)}
+.howto:focus-visible,.g-x:focus-visible,.g-close:focus-visible{outline:2px solid var(--ba);outline-offset:2px}
+dialog.guide{width:min(940px,calc(100vw - 32px));max-height:calc(100dvh - 40px);overflow:auto;padding:0;border:1px solid var(--rule);border-radius:10px;background:var(--surface);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.28)}
+dialog.guide::backdrop{background:rgba(15,19,26,.55)}
+.g-in{padding:22px 24px 24px;display:flex;flex-direction:column;gap:24px}
+.g-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.g-head > div{display:flex;flex-direction:column;gap:6px}
+.g-x{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--rule);background:none;color:var(--ink);font:400 20px/1 var(--sans);cursor:pointer}
+.g-x:hover{border-color:var(--muted)}
+.g-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:24px 32px}
+.g-block{display:flex;flex-direction:column;gap:9px;min-width:0}
+.g-block p{font-size:14px}
+.g-block + .g-block,.g-grid + .g-block,.g-block + .g-grid,.g-grid + .g-grid{border-top:1px solid var(--soft);padding-top:20px}
+.g-grid > .g-block{border-top:0;padding-top:0}
+.anat{display:grid;grid-template-columns:220px minmax(0,1fr);gap:14px 24px;align-items:center}
+@media (max-width:600px){.anat{grid-template-columns:1fr}.anat svg{width:220px}}
+.anat figcaption{text-align:center;font-family:var(--mono);font-size:12px}
+.marks,.gp,.gm{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.marks li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:baseline}
+.marks b,.gm b{font-family:var(--cond);font-weight:600;font-size:15px}
+.mk{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink);display:inline-grid;place-items:center;font:600 12px var(--mono)}
+.sqs{display:flex;flex-wrap:wrap;gap:3px 10px;margin-top:6px;font-family:var(--mono);font-size:12.5px}
+.sqs span{display:inline-flex;align-items:center;gap:5px}
+.sqs i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.gp li{display:grid;grid-template-columns:76px minmax(0,1fr) minmax(0,1.1fr);gap:6px 14px;align-items:baseline;padding-bottom:9px;border-bottom:1px solid var(--soft)}
+.gp li:last-child{border-bottom:0;padding-bottom:0}
+@media (max-width:680px){.gp li{grid-template-columns:76px minmax(0,1fr)}.gp .who{grid-column:2}}
+.gp .n{font-family:var(--mono);font-weight:600}
+.gp .who{color:var(--muted);font-size:13px;display:flex;flex-direction:column;gap:2px}
+.gm li{border-left:3px solid var(--rule);padding:2px 0 2px 10px}
+.gm li.now{border-left-color:var(--ink)}
+.gm .tag{font-family:var(--mono);font-size:11.5px;border:1px solid var(--ink);border-radius:3px;padding:0 5px;margin-left:8px;vertical-align:1px}
+.g-foot{display:flex;justify-content:flex-end}
+.g-close{font:500 13.5px var(--sans);color:var(--bg);background:var(--ink);border:0;border-radius:7px;padding:8px 18px;cursor:pointer}
 footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--rule);padding-top:14px}
 @media (prefers-reduced-motion:no-preference){.cell rect.box{transition:stroke-width .12s}}
 
@@ -202,6 +239,7 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
   <div class="sec-head">
     <h2 id="h-matrix">The materials: what is known, what each will get</h2>
     <p class="lede">The twelve materials as the thesis designed them: the cobalt line from NCA to the cobalt-free NMA, and the branches that dope or coat NCA and NMA. Colour by what the thesis determined, or by how many probes are planned. The squares under each value are the planned determinations. Select a material for what was refined, what does not close, and what each measurement will determine for it.</p>
+    <button type="button" class="howto" id="howto-open" aria-haspopup="dialog" aria-controls="guide"><span class="qm" aria-hidden="true">?</span>How to read the map</button>
   </div>
   <div class="toolbar">
     <div class="seg" role="group" aria-label="Colour the cells by">
@@ -221,6 +259,20 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
   </figure>
   <p class="note">Cells with a bold frame are the key set K9, measured with high-resolution neutrons. "n/a": the thesis gives no value for that material in that mode. Ni²⁺ is computed from the nominal formula with the usual valences; the Fe/Sb–NMA formula as printed has 1.10 metals and gives 0.55.</p>
   <div class="panel detail" id="detail" aria-live="polite"></div>
+  <dialog class="guide" id="guide" aria-labelledby="g-title">
+    <div class="g-in">
+      <div class="g-head">
+        <div>
+          <span class="eyebrow">Reading guide · the materials</span>
+          <h2 id="g-title">How to read the map</h2>
+          <p class="lede">Each box is one material, and it says four things at once: its name, which probes are planned for it (the five squares), how many that is (the number, repeated by the shade), and whether it is one of the key set (the frame).</p>
+        </div>
+        <button type="button" class="g-x" id="g-x" aria-label="Close the reading guide">×</button>
+      </div>
+      <div id="g-body"></div>
+      <div class="g-foot"><button type="button" class="g-close" id="g-close">Back to the map</button></div>
+    </div>
+  </dialog>
 </section>
 
 <section aria-labelledby="h-q">
@@ -452,6 +504,89 @@ function renderMatrix(focusId){
   if(focusId){const want=[...document.querySelectorAll('#map .cell')].find(c=>c.getAttribute('aria-label')===label(byId[focusId]));if(want)want.focus({preventScroll:true});}
 }
 document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;try{localStorage.setItem('kcs-mode',mode);}catch(e){}renderMatrix();}));
+
+/* reading guide of the map: filled from DATA when opened, so its counts follow the plan */
+const SAMPLE='La-NMA';
+const GPROBE=[['ID22','P2','the cell with esd, every material on one protocol; phase content to ≈ 0.1 wt% (Li₂CO₃, LiOH, rock-salt); the site of Y and La'],
+ ['EXAFS','P4','the K edges of Ni and of each dopant: the Ni valence against charge balance, the Sb and Fe valences, the coordination of Y, La and Sc, Nb in the coating'],
+ ['D2B','P1','Li, Ni and Mn on both layers with esd (Ni or Mn on the Li layer, 33× the X-ray contrast); the Li occupancy; z(O)'],
+ ['operando','P3','the c-axis collapse and the H2–H3 coexistence on the first charge to 4.5 V; the charged electrode heated'],
+ ['PDF','P5','X-ray total scattering of the coating and the solid-state interface']];
+const GMODE={plan:['Probes planned','the number counts the filled squares.'],
+ i003:['I(003)/I(104)','the intensity ratio of two reflections, the thesis\'s proxy for Li/Ni mixing: the higher, the less Ni on the Li layer, as it is usually read. A ratio, not a refinement.'],
+ ni2:['Ni²⁺ by charge balance','how much of the nickel must be Ni²⁺ for the nominal formula to balance with the usual valences (Mn⁴⁺, Mg²⁺, …). Ni²⁺ is the ion that can move into the Li layer. Fe/Sb–NMA reads 0.55* and stays uncoloured: its printed formula has 1.10 metals.'],
+ ret:['Retention, 200 cycles','the capacity kept after 200 cycles in the thesis\'s cell tests.']};
+const SHORT={'NCA':'NCA','Mn5-NCA':'5 % Mn','Mn10-NCA':'10 % Mn','NMA':'NMA','FeSb-NCA':'Fe/Sb','Mg-NMA':'Mg','Y-NMA':'Y','La-NMA':'La','Sc-NMA':'Sc','Na-NMA':'Na','FeSb-NMA':'Fe/Sb','NMA@LNO':'LiNbO₃'};
+const nameList=L=>L.map(d=>d.name).join(' · ');
+const prose=L=>{const n=L.map(d=>d.name);return n.length<2?n.join(''):n.slice(0,-1).join(', ')+' and '+n[n.length-1];};
+function sampleCell(d){
+  const m=MODES.plan,n=probesOf(d).size,fill=ramp(norm(m,n)),tc=textOn(fill),ps=probesOf(d);
+  const k=1.5,w=W*k,h=H*k,x0=10,y0=10,sq=12,gap=4.5,tot=PROBES.length*sq+(PROBES.length-1)*gap;let px=x0+(w-tot)/2;
+  let sqs='';PROBES.forEach(([p,c])=>{const has=ps.has(p);sqs+=`<rect x="${px}" y="${y0+h-22.5}" width="${sq}" height="${sq}" rx="2.2" fill="${has?c:'none'}" stroke="${has?'none':tc}" stroke-opacity=".45" stroke-width="1.5"/>`;px+=sq+gap;});
+  const mark=(k,cy,tx,ty)=>`<line x1="185" y1="${cy}" x2="${tx}" y2="${ty}" stroke="var(--ink)" stroke-width="1.2"/><circle cx="${tx}" cy="${ty}" r="2.5" fill="var(--ink)"/><circle cx="196" cy="${cy}" r="11" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5"/><text x="196" y="${cy+4}" text-anchor="middle" font-size="12" font-weight="600">${k}</text>`;
+  return `<svg viewBox="0 0 216 140" role="img" aria-label="One box of the map, enlarged: ${label(d)}.">
+  <rect x="${x0}" y="${y0}" width="${w}" height="${h}" rx="8" fill="${fill}" stroke="var(--ink)" stroke-width="3.2"/>
+  <text x="${x0+w/2}" y="${y0+25}" text-anchor="middle" font-size="18" font-weight="600" class="cond" style="fill:${tc}">${d.name}</text>
+  <text x="${x0+w/2}" y="${y0+64}" text-anchor="middle" font-size="22" font-weight="500" style="fill:${tc}">${n}</text>${sqs}
+  ${mark(1,16,x0+w,y0+8)}${mark(2,42,x0+w/2+34,y0+19)}${mark(3,68,x0+w/2+16,y0+57)}${mark(4,94,x0+w-12,y0+84)}${mark(5,120,x0+w/2+41,y0+h-16.5)}</svg>`;
+}
+function miniMap(){
+  const c=id=>[POS[id][0]+W/2,POS[id][1]+H/2];
+  let out=LINKS.map(([a,b,col])=>{const [x1,y1]=c(a),[x2,y2]=c(b);
+    const path=(Math.abs(y1-y2)<1||Math.abs(x1-x2)<1)?`M${x1},${y1} L${x2},${y2}`:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`;
+    return `<path d="${path}" fill="none" stroke="var(${col})" stroke-width="6" opacity=".85"/>`;}).join('');
+  out+=DATA.map(d=>{const [x,y]=POS[d.id];return `<rect x="${x}" y="${y}" width="${W}" height="${H}" rx="8" fill="var(--soft)" stroke="${d.id==='NMA'?'var(--ink)':'var(--rule)'}" stroke-width="${d.id==='NMA'?4:2}"/><text x="${x+W/2}" y="${y+H/2+9}" text-anchor="middle" font-size="26" font-weight="600" class="cond">${SHORT[d.id]||d.name}</text>`;}).join('');
+  return `<svg viewBox="0 0 874 360" role="img" aria-label="The map in miniature: the cobalt line from NCA to NMA, and the branches from NCA and from NMA.">${out}</svg>`;
+}
+function guide(){
+  const d=byId[SAMPLE],ps=probesOf(d);
+  const has=p=>DATA.filter(e=>probesOf(e).has(p));
+  const extra={D2B:['the same after 200 cycles',DATA.filter(e=>e.plan.some(p=>p[0]==='D2B'&&/200 cycles/.test(p[2])))],
+               ID22:['resonant patterns below the Ni K edge',DATA.filter(e=>e.plan.some(p=>p[0]==='ID22'&&/resonant/.test(p[2])))]};
+  const k9=DATA.filter(e=>e.k9),sizes=DATA.map(e=>probesOf(e).size),lo=Math.min(...sizes),hi=Math.max(...sizes);
+  const base=PROBES.map(([p])=>p).filter(p=>has(p).length===DATA.length);
+  const top=DATA.filter(e=>probesOf(e).size===hi),next=DATA.filter(e=>probesOf(e).size===hi-1);
+  const retOf=e=>e.ec&&e.ec.ret!=null?e.ec.ret.toFixed(1)+' %':null;
+  const best=DATA.filter(retOf).sort((a,b)=>b.ec.ret-a.ec.ret).slice(0,next.length);
+  const sqLine=PROBES.map(([p,c])=>`<span><i style="${ps.has(p)?`background:${c}`:'border:1.5px solid var(--muted)'}"></i>${p}</span>`).join('');
+  const on=PROBES.filter(([p])=>ps.has(p)).map(([p])=>p),off=PROBES.filter(([p])=>!ps.has(p)).map(([p])=>p);
+  document.getElementById('g-body').innerHTML=`
+  <div class="g-block"><span class="eyebrow">One box, five signs</span>
+   <div class="anat"><figure>${sampleCell(d)}<figcaption>${d.name}, ${d.group.replace(/\s*\(.*\)/,'')}</figcaption></figure>
+   <ol class="marks">
+    <li><span class="mk">1</span><span><b>The frame.</b> Bold: one of the key set K9, the ${k9.length} materials measured with high-resolution neutrons (D2B), with the lithium balance done at home first. A thin frame: not in the key set.</span></li>
+    <li><span class="mk">2</span><span><b>The name.</b> The material as the thesis made it; its place on the map says which design line it belongs to.</span></li>
+    <li><span class="mk">3</span><span><b>The number.</b> How many of the five probes are planned for this material: ${ps.size} here. The other buttons above the map put a thesis value in its place.</span></li>
+    <li><span class="mk">4</span><span><b>The shade.</b> The same number as a colour, pale for few probes and dark for ${hi}, so the busy materials stand out from afar. It says nothing the number does not.</span></li>
+    <li><span class="mk">5</span><span><b>The five squares.</b> One per probe, always in this order; filled is planned, empty is not. Here ${on.join(', ')}${off.length?'; no '+off.join(', '):''}.<span class="sqs">${sqLine}</span></span></li>
+   </ol></div></div>
+  <div class="g-grid">
+   <div class="g-block"><span class="eyebrow">Where each material sits</span>${miniMap()}
+    <p>The map follows the thesis's design, one colour per design line. The cobalt line runs from NCA at the top left through 5 % and 10 % Mn–NCA to the cobalt-free NMA. NMA, framed above, is the reference of everything to its right and below it: the Mg, Y and La substitutions, the Sc and Na single-site dopings, Fe/Sb co-doping, and the LiNbO₃-coated NMA for solid-state cells. Fe/Sb–NCA branches from NCA. ${DATA.length} materials in all.</p></div>
+   <div class="g-block"><span class="eyebrow">The formulas behind the names</span>
+    <p>All ${DATA.length} keep 0.8 Ni and 0.05 Al per formula unit. NCA is ${formula(byId['NCA'].nominal)}; replacing its cobalt by manganese, step by step, leads to NMA, ${formula(byId['NMA'].nominal)}.</p>
+    <p>Mg, Y, La and Sc take 0.03 of NMA's Mn; Na takes 0.03 of its Li. Fe and Sb, 0.05 each, replace 0.10 of NCA's Co, and are added on top of NMA's Mn (the printed Fe/Sb–NMA formula has 1.10 metals). The coated NMA is NMA with about 1 wt% LiNbO₃ on its surface.</p></div>
+  </div>
+  <div class="g-block"><span class="eyebrow">What lifts a box above ${base.length}</span>
+   <p>Every material gets the same ${base.length} measurements, ${base.join(' and ')}; a box that says ${base.length} has nothing more. Anything above was chosen for a question it carries: the key set adds D2B, and a few add operando or PDF.</p>
+   <ul class="gp">${GPROBE.map(([p,pr,w])=>{const L=has(p),all=L.length===DATA.length;const ex=extra[p]&&extra[p][1].length?`<span>${extra[p][0]} for ${extra[p][1].length}: ${nameList(extra[p][1])}</span>`:'';
+     return `<li><span class="ptag" style="background:${PTAG[p][1]}">${p} <small>${pr}</small></span><span>${w}</span><span class="who"><span class="n">${all?'all '+L.length:L.length+' of '+DATA.length}${p==='D2B'?' · the key set':''}</span>${all?'':`<span>${nameList(L)}</span>`}${ex}</span></li>`;}).join('')}</ul></div>
+  <div class="g-grid">
+   <div class="g-block"><span class="eyebrow">The four buttons</span>
+    <ul class="gm">${Object.keys(GMODE).map(k=>`<li class="${k===mode?'now':''}"><b>${GMODE[k][0]}</b>${k===mode?'<span class="tag">now</span>':''}<br>${k==='plan'?`the number counts the filled squares, ${lo} to ${hi}.`:GMODE[k][1]}</li>`).join('')}</ul>
+    <p class="note">In every mode the squares still show the plan and the bold frame still marks K9. "n/a": the thesis gives no value for that material in that mode.</p></div>
+   <div class="g-block"><span class="eyebrow">Where to look first</span>
+    <p>The darkest box is ${prose(top)}, with all ${hi} probes: the hub of the map and the reference of three design lines. Next come ${prose(next)}, with ${hi-1}: they add the operando charge${best.length===next.length&&next.every(e=>best.includes(e))?`, and they are the materials with the best retention in the thesis (${next.map(e=>e.name+' '+retOf(e)).join(', ')})`:''}.</p>
+    <p>Then select any box: the panel under the map lists, for that material, what the thesis refined and what each planned measurement will determine.</p></div>
+  </div>`;
+}
+const GD=document.getElementById('guide');
+document.getElementById('howto-open').addEventListener('click',()=>{guide();if(GD.showModal)GD.showModal();else GD.setAttribute('open','');GD.scrollTop=0;});
+const closeGuide=()=>{if(GD.close)GD.close();else GD.removeAttribute('open');};
+document.getElementById('g-x').addEventListener('click',closeGuide);
+document.getElementById('g-close').addEventListener('click',closeGuide);
+GD.addEventListener('click',e=>{if(e.target===GD)closeGuide();});
+GD.addEventListener('close',()=>document.getElementById('howto-open').focus({preventScroll:true}));
 
 const QP={F01:{home:1,D2B:2,ID22:1},F02:{home:2,D2B:2,ID22:1},F03:{D2B:2,EXAFS:2},F04:{D2B:1,ID22:2,EXAFS:2},F05:{home:1,D2B:1,ID22:1,EXAFS:2},F06:{D2B:2,operando:2},F07:{home:1,ID22:2},F08:{home:1,ID22:2},F09:{D2B:1,operando:2},F10:{ID22:1,EXAFS:2,PDF:2}};
 const COLS=['home','D2B','ID22','operando','EXAFS','PDF'];
